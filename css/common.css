@@ -4,6 +4,19 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'AlexBrush';
+    src: url('../font/AlexBrush-Regular.ttf');
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+}
+
+html {
+    background: #eee;
+}
+
 ul {
     list-style: none;
 }
@@ -11,11 +24,6 @@ ul {
 a {
     text-decoration: none;
     color: #fff;
-}
-
-body,
-html {
-    background: #eee;
 }
 
 header {
@@ -27,4 +35,12 @@ header {
     text-align: center;
     color: #fff;
     box-shadow: 1px 1px 1px #666;
+}
+
+.clearfix:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 0;
+    clear: both;
 }
