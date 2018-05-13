@@ -48,11 +48,13 @@
 .header-nav ul li a:hover {
     transition: color .25s ease-in-out;
     color: #c76c0c;
+    border-color: #c76c0c;
 }
 
 .header-user a:hover {
     transition: color .25s ease-in-out;
     color: #c76c0c;
+    border-color: #c76c0c;
 }
 
 .header-user {
@@ -259,8 +261,11 @@ aside {
     height: 150px;
     color: #fff;
     cursor: default;
-    background-image: linear-gradient(135deg, #563d7c, #3f5b6e, #52768e);
     text-shadow: 1px 1px 4px rgba(0, 0, 0, .5);
+    background: #52768e;
+    background: linear-gradient(135deg, #563d7c, #3f5b6e, #52768e);
+    background: url(../image/background-user.jpg) no-repeat bottom center;
+    background-size: cover;
 }
 
 .card-user-header h3 {
