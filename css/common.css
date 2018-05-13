@@ -13,8 +13,10 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
 }
 
-html {
+html,
+body {
     background: #eee;
+    height: 100%;
 }
 
 ul {
@@ -53,4 +55,12 @@ header {
 .content-between {
     display: flex;
     justify-content: space-between;
+}
+
+input {
+    padding: 6px 10px;
+    border-radius: 5px;
+    outline: none;
+    font-size: 14px;
+    background: transparent;
 }
