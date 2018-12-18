@@ -1,15 +1,31 @@
-#Blog
+# blog
 
-##blog-front
-前台模仿Xblog
-https://lufficc.com/
-https://github.com/lufficc/Xblog
+## 介绍
 
-##blog-Admin
-后台管理界面使用 #X-admin
-http://x.xuebingsi.com
+我的个人博客 分享我的学习过程,生活等
 
-交流QQ群：519492808
+## 目录结构
 
-##blog
-* 5.2完成用户界面增删改查
+```
+├── bin                         启动文件
+│   └── www
+├── controllers                 控制器
+├── logs
+├── middlewares                 中间件
+├── models                      连接数据库以及实体
+│   ├── mongoose.js
+│   └── user.js
+├── public                      静态资源
+│   ├── css
+│   ├── js
+│   ├── font
+│   └── img
+├── utils                       工具类
+├── view                        视图
+│   └── common
+├── app.js 
+├── config.default.js           默认配置
+├── LICENSE
+├── package.json
+└── README.md
+```
