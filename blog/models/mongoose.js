@@ -1,3 +1,6 @@
+/**
+ * 连接数据库
+ */
 const mongoose = require('mongoose');
 const DB_URL = 'mongodb://localhost:27017/blog';
 

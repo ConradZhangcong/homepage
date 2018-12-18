@@ -1,0 +1,129 @@
+header {
+  background: #52768e;
+  background: linear-gradient(135deg, #563d7c, #3f5b6e, #52768e);
+  background: url(../img/background.jpg) no-repeat bottom center;
+  background-size: cover;
+  width: 100%;
+  min-height: 180px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 1px 1px 1px #666;
+}
+
+.content-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-wrap {
+  width: 100%;
+  padding: 0px 15px;
+}
+
+.header-top {
+  width: 100%;
+  padding: 7px 15px;
+  display: flex;
+}
+
+.header-log {
+  font-family: 'AlexBrush';
+  font-size: 34px;
+  height: 50px;
+  line-height: 50px;
+  margin-right: 20px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, .5);
+  color: #fff;
+  cursor: pointer;
+}
+
+.header-log:hover {
+  color: #c76c0c;
+  transition: all .25s ease-in-out;
+}
+
+.header-nav {
+  height: 50px;
+}
+
+.header-nav ul li {
+  float: left;
+  display: flex;
+}
+
+.header-top a {
+  color: #fff;
+  font-size: 14px;
+  margin: 8px 10px;
+  padding: 6px 20px;
+  border-radius: 50px;
+  border: 1px solid #3f5b6e;
+  background: rgba(82, 118, 142, .25);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, .5);
+}
+
+.header-nav ul li a:hover {
+  transition: color .25s ease-in-out;
+  color: #c76c0c;
+  border-color: #c76c0c;
+}
+
+.header-user a:hover {
+  transition: color .25s ease-in-out;
+  color: #c76c0c;
+  border-color: #c76c0c;
+}
+
+.header-user {
+  height: 50px;
+  margin-left: auto;
+  display: flex;
+  float: right;
+}
+
+.header-user form input {
+  color: #fff;
+  font-family: inherit;
+  margin: 8px 10px;
+  vertical-align: middle;
+  border: 1px solid #3f5b6e;
+}
+
+.header-user form input:focus {
+  transition: box-shadow .15s ease-in-out;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, .25);
+}
+
+input::-webkit-input-placeholder {
+  color: #aaa;
+}
+
+input::-moz-placeholder {
+  color: #aaa;
+}
+
+input::-moz-placeholder {
+  color: #aaa;
+}
+
+input::-ms-input-placeholder {
+  color: #aaa;
+}
+
+.header-motto {
+  width: 100%;
+  text-align: center;
+  padding: 0px 15px;
+}
+
+.header-motto h1 {
+  font-family: 'AlexBrush';
+  font-size: 40px;
+  margin: 14px 15px 7px;
+  line-height: 27px;
+  font-weight: 500;
+  text-align: center;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, .5);
+  cursor: default;
+}
