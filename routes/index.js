@@ -3,13 +3,15 @@ const router = express.Router();
 const userModel = require('../models/user');
 
 router.get('/', function (req, res, next) {
-  res.render('index', {
+  res.render('layout', {
+    pagename: 'index',
     title: 'Conrad'
   });
 });
 
 router.get('/login', function (req, res, next) {
-  res.render('login', {
+  res.render('layout', {
+    pagename: 'login',
     title: '登录'
   });
 });
