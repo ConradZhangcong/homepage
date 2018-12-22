@@ -22,8 +22,8 @@ button, input, select, textarea {
 /* 默认颜色 */
 html {
   height: 100%;
-  background: #f6f6f6;
-  color: #666;
+  background: #eee;
+  color: #333;
 }
 
 /* 重置列表元素 */
@@ -34,6 +34,7 @@ li{
 /* 重置文本格式元素 */
 a {
   text-decoration: none;
+  color: #007bff
 }
 
 /* 清除浮动 */

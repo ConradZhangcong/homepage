@@ -3,17 +3,36 @@ input {
   display: inline-block;
   height: 32px;
   line-height: 32px;
-  padding: 0 15px;
   box-sizing: border-box;
-  color: #fff;
-  background: transparent;
+  background: inherit;
   outline: none;
   border-radius: 4px;
-  border: 1px solid #3f5b6e;
-  transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
+  border: 1px solid #000;
 }
 
-.conrad-button {
+button {
+  background: inherit;
+  border-radius: 4px;
+  border: 1px solid #000;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+/* main 主体 */
+.main-container {
+  margin: 40px auto;
+  width: 1140px;
+  min-height: 569px;
+}
+
+/* header 头部 */
+.header-button {
   padding: 6px 18px;
   color: #fff;
   border: 1px solid #3f5b6e;
@@ -21,7 +40,6 @@ input {
   box-sizing: border-box;
 }
 
-/* 头部 */
 .header-container {
   background: #52768e;
   background: linear-gradient(135deg, #563d7c, #3f5b6e, #52768e);
@@ -29,7 +47,6 @@ input {
   background-size: cover;
   width: 100%;
   height: 260px;
-  margin-bottom: 20px;
   color: #fff;
   box-shadow: 0px 1px 10px #666;
 }
@@ -56,7 +73,7 @@ input {
   line-height: 60px;
   color: #fff;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, .5);
-  cursor: pointer;
+  cursor: default;
 }
 
 .header-nav {
@@ -87,14 +104,22 @@ input {
   line-height: 60px
 }
 
-.header-input-container input{
+.header-input {
+  padding: 0 15px;
   width: 180px;
-  transition: all .2s;
+  color: #fff;
+  border-color: #3f5b6e;
+  transition: all .2s cubic-bezier(.645, .045, .355, 1);
 }
-.header-input-container input:hover{
+
+.header-input:hover {
   border: 1px solid #00c1de;
   width: 250px;
-  transition: all .2s;
+}
+
+.header-input:focus {
+  border: 1px solid #00c1de;
+  width: 250px;
 }
 
 .header-main h1 {
@@ -108,11 +133,8 @@ input {
   cursor: default;
 }
 
-/* footer */
+/* footer 底部 */
 .footer-container {
-  position: absolute;
-  left: 0;
-  bottom: 0;
   width: 100%;
   height: 60px;
   color: #aaa;
@@ -122,4 +144,62 @@ input {
 .foorer-content {
   line-height: 60px;
   text-align: center;
+}
+
+/* card 卡片 */
+.card-container {
+  width: 100%;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+}
+
+.card-header {
+  padding: 12px 20px;
+  background: rgba(0, 0, 0, .03);
+  border-bottom: 1px solid rgba(0, 0, 0, .125);
+}
+
+.card-main {
+  padding: 20px
+}
+
+/* login  登录 */
+.login-container {
+  margin: 0 auto;
+  width: 500px;
+}
+
+.login-form {
+  padding: 0 10px 10px;
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group:last-child {
+  margin-bottom: 12px;
+}
+
+.form-label {
+  display: inline-block;
+  margin-bottom: 9px;
+}
+
+.form-input {
+  display: block;
+  padding: 0 12px;
+  width: 80%;
+  border-color: #ced4da;
+}
+
+.login-button {
+  padding: 8px 12px;
+  margin: 15px 10px 0 0;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  cursor: pointer;
 }

@@ -4,8 +4,8 @@ const userModel = require('../models/user');
 
 router.get('/', function (req, res, next) {
   res.render('layout', {
-    pagename: 'index',
-    title: 'Conrad'
+    pagename: 'blog',
+    title: 'Conrad的博客'
   });
 });
 
@@ -13,6 +13,20 @@ router.get('/login', function (req, res, next) {
   res.render('layout', {
     pagename: 'login',
     title: '登录'
+  });
+});
+
+router.get('/register', function (req, res, next) {
+  res.render('layout', {
+    pagename: 'register',
+    title: '登录'
+  });
+});
+
+router.get('/about', function (req, res, next) {
+  res.render('layout', {
+    pagename: 'about',
+    title: '关于Conrad'
   });
 });
 
