@@ -1,11 +1,7 @@
-let username = document.getElementById('username');
-let password = document.getElementById('password');
-let loginBtn = document.getElementById('btn-login');
-
-loginBtn.onclick = function () {
+$('.login-button').click(function () {
   let data = {
-    username: username.value,
-    password: password.value
+    username: $('#login-email').val(),
+    password: $('#login-password').val()
   }
   $.ajax({
     type: 'post',
@@ -13,7 +9,7 @@ loginBtn.onclick = function () {
     data: data,
     success: function (data) {
       console.log(data)
-      if(data.isLogin){
+      if (data.isLogin) {
         console.log('登录成功')
       }
     },
@@ -21,4 +17,4 @@ loginBtn.onclick = function () {
       console.log(error)
     }
   })
-}
+})

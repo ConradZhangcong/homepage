@@ -27,7 +27,8 @@ button {
 .shadow-box {
   border-radius: 4px;
   background: #fff;
-  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 
 .ellipsis {
@@ -76,14 +77,14 @@ button {
   width: 100%;
   height: 60px;
   padding: 0 20px;
-  background: rgba(0, 0, 0, .4);
+  background: rgba(0, 0, 0, 0.4);
   box-sizing: border-box;
   border-bottom: 1px solid #52768e;
-  transition: all .3s cubic-bezier(0, 0, .2, 1) .15s;
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1) 0.15s;
 }
 
 .header-top:hover {
-  background: rgba(0, 0, 0, .7);
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .header-logo {
@@ -93,7 +94,7 @@ button {
   font-family: 'AlexBrush';
   line-height: 60px;
   color: #fff;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, .5);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
   cursor: default;
 }
 
@@ -110,7 +111,7 @@ button {
 .header-nav li a {
   line-height: 60px;
   color: #fff;
-  transition: color .2s;
+  transition: color 0.2s;
 }
 
 .header-nav li a:hover {
@@ -122,7 +123,7 @@ button {
 }
 
 .header-input-container {
-  line-height: 60px
+  line-height: 60px;
 }
 
 .header-input {
@@ -130,7 +131,7 @@ button {
   width: 180px;
   color: #fff;
   border-color: #3f5b6e;
-  transition: all .2s cubic-bezier(.645, .045, .355, 1);
+  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 .header-input:hover {
@@ -150,7 +151,7 @@ button {
   line-height: 27px;
   font-weight: 500;
   text-align: center;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, .5);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
   cursor: default;
 }
 
@@ -168,18 +169,18 @@ button {
 }
 
 /* card 卡片 */
-.card-container {
+.login-container {
   width: 100%;
 }
 
-.card-header {
+.login-header {
   padding: 12px 20px;
-  background: rgba(0, 0, 0, .03);
-  border-bottom: 1px solid rgba(0, 0, 0, .125);
+  background: rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
-.card-main {
-  padding: 20px
+.login-main {
+  padding: 20px;
 }
 
 /* login  登录 */
@@ -243,7 +244,7 @@ button {
   font-size: 24px;
   line-height: 1.5;
   font-weight: 500;
-  transition: all .2s;
+  transition: all 0.2s;
 }
 
 .article-title:hover {
@@ -286,7 +287,7 @@ button {
   display: inline-block;
 }
 
-.article-paginate ul li {
+.article-paginate ul a {
   float: left;
   margin-right: 5px;
   padding: 8px 10px;
@@ -295,8 +296,8 @@ button {
   border-radius: 4px;
 }
 
-.article-paginate ul li:first-child,
-.article-paginate ul li:last-child {
+.article-paginate ul a:first-child,
+.article-paginate ul a:last-child {
   padding: 8px 12px;
 }
 
@@ -323,7 +324,6 @@ button {
   font-size: 24px;
   line-height: 1.5;
 }
-
 
 .user-header span {
   font-size: 18px;
@@ -364,33 +364,68 @@ button {
 
 .card-container {
   margin-bottom: 15px;
-  padding: 20px 15px;
+  padding: 20px 0 5px;
   box-sizing: border-box;
 }
 
 .card-title {
-  padding-bottom: 12px;
+  padding: 0px 15px 12px 15px;
   font-size: 20px;
   font-weight: 400;
   border-bottom: 1px solid #e7e7e7;
 }
 
-.hot-article ul a {
-  display: block;
-  padding: 8px 0 0 0;
-  color: #505050;
-  transition: all .2s;
+.card-more {
+  font-size: 12px;
+  margin-top: 10px;
 }
 
-.hot-article ul a p {
+.card-article ul a,
+.card-classify ul a {
+  display: block;
+  padding: 8px 15px;
+  color: #505050;
+  transition: all 0.2s;
+}
+
+.card-classify ul a {
+  padding: 12px 15px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.card-article ul a p,
+.card-classify ul a p {
   font-size: 14px;
   line-height: 1.5;
 }
 
-.hot-article ul a small {
+.card-article ul a small,
+.card-classify ul a small {
   color: #6c757d;
 }
 
-.hot-article ul a:hover {
+.card-article ul a:hover,
+.card-classify ul a:hover {
+  background-color: #f8f9fa;
+}
+
+.card-tags-list {
+  padding: 12px 12px 0;
+}
+
+.card-tags-list ul a {
+  float: left;
+  padding: 5px 6px;
+  margin: 0 12px 9px 0;
+  color: #505050;
+  border: 1px solid #3f5b6e;
+  border-radius: 4px;
+  transition: all .2s;
+}
+
+.card-tags-list ul a:hover {
+  color: #00c1de;
+  text-decoration: underline;
   background-color: #f8f9fa;
 }
