@@ -3,9 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var favicon = require('serve-favicon')
+const favicon = require('serve-favicon');
+const session = require('express-session');
 const chalk = require('chalk');
-const config = require('./config.default.js')
+const config = require('./config.default.js');
 
 // routes
 var indexRouter = require('./routes/index');
@@ -24,7 +25,20 @@ app.use(express.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// 使用session中间件 session必须写在路由的上方
+app.use(session({
+  secret: 'secret',
+  name: 'session',
+  resave: true,
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 1000 * 60 * 60
+  }
+}));
+
+// favicon 标签的图标
 app.use(favicon(path.join(__dirname, 'public/img', 'favicon.ico')))
+// routes
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler

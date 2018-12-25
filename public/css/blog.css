@@ -1,0 +1,206 @@
+/* blog-list */
+.article-list-container {
+  float: left;
+  width: 66%;
+}
+
+.article-container {
+  padding: 18px 0;
+  margin-bottom: 20px;
+}
+
+.article-header {
+  padding: 0 25px 10px;
+  border-bottom: 1px dashed #ebebeb;
+}
+
+.article-title {
+  color: #303030;
+  font-size: 24px;
+  line-height: 1.5;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.article-title:hover {
+  color: #007bff;
+}
+
+.article-meta {
+  margin-top: 10px;
+}
+
+.article-meta span {
+  margin-right: 10px;
+}
+
+.article-description {
+  padding: 15px 25px;
+  border-bottom: 1px dashed #ebebeb;
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.article-footer {
+  padding: 10px 25px 0;
+}
+
+.article-tag {
+  margin-right: 10px;
+  color: #6c757d;
+}
+
+.article-tag:hover {
+  text-decoration: underline;
+}
+
+.article-paginate {
+  text-align: center;
+}
+
+.article-paginate ul {
+  display: inline-block;
+}
+
+.article-paginate ul a {
+  float: left;
+  margin-right: 5px;
+  padding: 8px 10px;
+  background-color: #f5f5f5;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+.article-paginate ul a:first-child,
+.article-paginate ul a:last-child {
+  padding: 8px 12px;
+}
+
+.aside-container {
+  float: right;
+  width: 30%;
+}
+
+.user-container {
+  margin-bottom: 15px;
+}
+
+.user-header {
+  position: relative;
+  padding: 20px;
+  height: 150px;
+  color: #fff;
+  background-image: url(/img/background-user.jpg);
+  background-size: cover;
+  box-sizing: border-box;
+}
+
+.user-header p {
+  font-size: 24px;
+  line-height: 1.5;
+}
+
+.user-header span {
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.user-avator {
+  position: absolute;
+  top: 105px;
+  left: 50%;
+  margin-left: -45px;
+  width: 90px;
+  height: 90px;
+  border: 2px solid #fff;
+  border-radius: 100px;
+}
+
+.user-footer {
+  padding-top: 45px;
+  text-align: center;
+}
+
+.user-footer ul {
+  display: inline-block;
+  padding: 30px 20px 20px;
+}
+
+.user-footer ul li {
+  float: left;
+  padding: 0 40px;
+}
+
+.user-footer ul li a {
+  color: #6c757d;
+  font-size: 20px;
+}
+
+.card-container {
+  margin-bottom: 15px;
+  padding: 20px 0 5px;
+  box-sizing: border-box;
+}
+
+.card-title {
+  padding: 0px 15px 12px 15px;
+  font-size: 20px;
+  font-weight: 400;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.card-more {
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.card-article ul a,
+.card-classify ul a {
+  display: block;
+  padding: 8px 15px;
+  color: #505050;
+  transition: all 0.2s;
+}
+
+.card-classify ul a {
+  padding: 12px 15px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.card-article ul a p,
+.card-classify ul a p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.card-article ul a small,
+.card-classify ul a small {
+  color: #6c757d;
+}
+
+.card-article ul a:hover,
+.card-classify ul a:hover {
+  background-color: #f8f9fa;
+}
+
+.card-tags-list {
+  padding: 12px 12px 0;
+}
+
+.card-tags-list ul a {
+  float: left;
+  padding: 5px 6px;
+  margin: 0 12px 9px 0;
+  color: #505050;
+  border: 1px solid #3f5b6e;
+  border-radius: 4px;
+  transition: all .2s;
+}
+
+.card-tags-list ul a:hover {
+  color: #00c1de;
+  text-decoration: underline;
+  background-color: #f8f9fa;
+}

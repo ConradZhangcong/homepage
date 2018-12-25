@@ -11,6 +11,7 @@
   <link rel="stylesheet" type="text/css" href="/css/reset.css" />
   <link rel="stylesheet" type="text/css" href="/css/common.css" />
   <link rel="stylesheet" type="text/css" href="/css/iconfont.css" />
+  <%- '<link rel="stylesheet" type="text/css" href="/css/' + pagename + '.css" />' %>
 </head>
 
 <body>
@@ -23,8 +24,7 @@
 
   <%- include("./common/footer.ejs") %>
   <script src="/js/jquery.min.js"></script>
-  <%- '<script src="/js/login.js"></script>' %>
-  <!-- <%- include('../public/js/'+pagename+ '.js') %> -->
+  <%- '<script src="/js/'+pagename+'.js"></script>' %>
 </body>
 
 </html>
