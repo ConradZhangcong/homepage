@@ -1,15 +1,16 @@
 /**
  * 连接数据库
  */
+const config = require('../config.default.js')
 const mongoose = require('mongoose');
-const DB_URL = 'mongodb://localhost:27017/blog';
+const dbUrl = config.dbUrl;
 
 // 连接
-mongoose.connect(DB_URL);
+mongoose.connect(dbUrl);
 
 // 连接成功
 mongoose.connection.on('connected', function () {
-  console.log('连接成功' + DB_URL);
+  console.log('连接成功' + dbUrl);
 });
 
 // 连接异常

@@ -7,25 +7,36 @@ const timeUtil = require('../utils/time');
 const md5 = require('md5-node');
 
 router.get('/', function (req, res, next) {
-  console.log(req.session)
   res.render('layout', {
     pagename: 'blog',
-    title: 'Conrad的博客'
+    username: req.session.username
   });
 });
 
 router.get('/login', function (req, res, next) {
-  res.render('layout', {
-    pagename: 'login',
-    title: '登录'
-  });
+  if (req.session.username) { // 已经登录
+    res.render('notify', {
+      msg: '您已经登录'
+    })
+  } else { // 尚未登录
+    res.render('layout', {
+      pagename: 'login',
+      title: '登录'
+    });
+  }
 });
 
 router.get('/register', function (req, res, next) {
-  res.render('layout', {
-    pagename: 'register',
-    title: '注册'
-  });
+  if (req.session.username) { // 已经登录
+    res.render('notify', {
+      msg: '您已经登录,不需要注册'
+    })
+  } else { // 尚未登录
+    res.render('layout', {
+      pagename: 'register',
+      title: '注册'
+    });
+  }
 });
 
 router.get('/about', function (req, res, next) {
@@ -57,14 +68,14 @@ router.post('/doLogin', function (req, res, next) {
       } else {
         let logInfo = '';
         let nowTime = timeUtil();
-        resultUtil.msg = "登录成功";
-        resultUtil.data = {
-          isLogin: true
-        }
-        res.send(resultUtil);
         // 登陆成功 添加到session
         req.session.username = data[0].username;
-        console.log(req.session)
+        req.app.locals.username = data[0].username;
+
+        resultUtil.code = 200;
+        resultUtil.msg = "登录成功";
+        res.send(resultUtil);
+
         // 添加记录到日志文件 login.log
         logInfo = 'user: ' + data[0].username + ' logged in at ' + nowTime + '\n';
         fs.writeFile('./logs/login.log', logInfo, {

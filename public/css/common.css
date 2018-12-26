@@ -76,7 +76,7 @@ button {
 .header-top {
   width: 100%;
   height: 60px;
-  padding: 0 20px;
+  padding: 0 110px 0 50px;
   background: rgba(0, 0, 0, 0.4);
   box-sizing: border-box;
   border-bottom: 1px solid #52768e;
@@ -100,6 +100,7 @@ button {
 
 .header-nav {
   display: inline-block;
+  position: relative;
 }
 
 .header-nav li {
@@ -153,6 +154,78 @@ button {
   text-align: center;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
   cursor: default;
+}
+
+.logined {
+  float: left;
+  padding: 10px 0;
+  margin-left: 10px;
+}
+
+.logined-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.logined:hover .logined-menu {
+  /* display: block; */
+  opacity: 1;
+  transition: all .5s;
+}
+
+.logined-menu {
+  /* display: none; */
+  position: absolute;
+  top: 60px;
+  right: -75px;
+  width: 200px;
+  padding-top: 20px;
+  background: #fff;
+  border-radius: 0 0 6px 6px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.logined-menu p {
+  padding-bottom: 10px;
+  font-size: 18px;
+  color: #969aa1;
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+  cursor: default;
+}
+
+.logined-menu ul {
+  padding: 10px 0 0 0;
+}
+
+.logined-menu ul a {
+  display: block;
+  padding: 0 20px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #969aa1;
+  transition: color .2s;
+}
+
+.logined-menu ul a:hover {
+  color: #00c1de;
+  /* background: #f8f9fa; */
+}
+
+.logined-menu ul a i {
+  margin-right: 10px;
+}
+
+.logined-footer {
+  line-height: 48px;
+  background: #f1f2f4;
+  color: #b4b4b4;
+  text-align: center;
+  cursor: pointer;
 }
 
 /* footer 底部 */

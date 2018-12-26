@@ -9,14 +9,30 @@
     <div class="header-personal header-nav">
       <li>
         <div class="header-input-container">
-          <input type="text" placeholder="搜索文章" class="header-input">
+          <input type="text" placeholder="搜索文章" class="header-input" />
         </div>
       </li>
+      <% if(username) { %>
+      <div class="logined">
+        <img
+          src="http://thyrsi.com/t6/642/1545833491x2890211744.jpg"
+          alt=""
+          class="logined-img"
+        />
+        <div class="logined-menu">
+          <p><%=username%></p>
+          <ul>
+            <a href="javscript:;"><i class="iconfont">&#xe602;</i>个人中心</a>
+            <a href="javscript:;"><i class="iconfont">&#xe618;</i>消息中心</a>
+          </ul>
+          <div class="logined-footer">退出登录</div>
+        </div>
+      </div>
+      <% } else { %>
       <li><a href="/login" class="header-button">登录</a></li>
       <li><a href="/register" class="header-button">注册</a></li>
+      <% } %>
     </div>
   </div>
-  <div class="header-main">
-    <h1>just going go</h1>
-  </div>
+  <div class="header-main"><h1>just going go</h1></div>
 </header>

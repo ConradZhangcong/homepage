@@ -24,8 +24,9 @@ $('.login-button').click(function () {
       console.log(data);
       if (data.code === 200) {
         console.log('登录成功');
-        self.location = document.referrer; // 返回上一个页面
-        console.log(document.referrer)
+        // self.location = document.referrer; // 返回上一个页面
+        // console.log(document.referrer)
+        window.location.href = '/'
         return false;
       } else {
         console.log(data.msg);

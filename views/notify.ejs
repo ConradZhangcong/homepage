@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>
+    <%=title%>
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="/css/reset.css" />
+  <style>
+    .container {
+      width: 400px;
+      height: 300px;
+      padding: 12px 20px;
+      margin: 20px auto;
+      text-align: center;
+      border-radius: 4px;
+      background: #fff;
+      box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+        0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    }
+
+    .message {}
+  </style>
+
+<body>
+  <div class="container">
+    <h1 class="message">
+      <%=msg%>
+    </h1>
+    <p style="margin: 20px 0;">3s后返回博客主页</p>
+    <a href="/">点击返回博客主页</a>
+  </div>
+  <script>
+    setTimeout(function () {
+      window.location.href = '/';
+    }, 3000);
+  </script>
+</body>
+
+</html>
