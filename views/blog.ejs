@@ -1,76 +1,44 @@
-<!-- 主要部分 -->
+<!-- 博客主体部分 -->
 <section class="article-list-container">
-  <!-- 文章1 -->
+  <% for(var i = 0; i < articleList.length; i++) { %>
   <article class="article-container shadow-box">
     <div class="article-header">
-      <a title="完整的标题" href="javascript:;" class="article-title ellipsis">Windows 平台开发打包 PyQt 程序Windows 平台开发打包 PyQt
-        程序Windows
-        平台开发打包 PyQt程序Windows 平台开发打包 PyQt 程序</a>
-      <div class="article-meta">
-        <span>
+      <a title="<%=articleList[i].title%>" href="/article?id=<%=articleList[i]._id%>" class="article-title ellipsis">
+        <%=articleList[i].title%></a>
+      <ul class="article-meta clearfix">
+        <li>
           <i class="iconfont">&#xe7eb;</i>
-          <time>2018-05-11</time>
-        </span>
-        <span class="article-category">
+          <span><%=articleList[i].createTime.split(' ')[0]%></span>
+        </li>
+        <li class="article-category"> 
           <i class="iconfont">&#xe654;</i>
-          <a href="javascript:;">Python</a>
-        </span>
-        <span>
-          <i class="iconfont">&#xe6ad;</i>
-          <small>0</small>
-        </span>
-        <span>
-          <i class="iconfont">&#xe63b;</i>
-          <small>0</small>
-        </span>
-      </div>
+          <a href="javascript:;"><%=articleList[i].classify%></a>
+        </li>
+        <li>
+          <i class="iconfont" title="评论">&#xe7f5;</i>
+          <span><%=articleList[i].comments%></span>
+        </li>
+        <li>
+          <i class="iconfont" title="阅读量">&#xe62a;</i>
+          <span><%=articleList[i].reading%></span>
+        </li>
+        <li>
+          <i class="iconfont" title="收藏">&#xe702;</i>
+          <span><%=articleList[i].favourite%></span>
+        </li>
+      </ul>
     </div>
     <div class="article-description">
-      <p class="ellipsis-mutiple" title="完整内容">Windows 平台打包 PyQt 程序Windows 平台打包 PyQt 程序Windows 平台打包 PyQt 程序Windows 平台打包
-        PyQt 程序</p>
+      <p class="ellipsis-mutiple" title="<%=articleList[i].describe%>"><%=articleList[i].describe%></p>
     </div>
     <div class="article-footer">
-      <i class="iconfont">&#xe610;</i>
-      <a class="article-tag" href="javascript:;">javascript</a>
-      <a class="article-tag" href="javascript:;">算法</a>
+      <i class="iconfont" style="margin-right: 6px;">&#xe610;</i>
+      <% for(var j = 0; j < articleList[i].tags.length; j++) { %>
+      <a class="article-tag" href="javascript:;"><%=articleList[i].tags[j]%></a>
+      <% } %>
     </div>
   </article>
-  <!-- 文章1结束 -->
-  <!-- 文章2 -->
-  <article class="article-container shadow-box">
-    <div class="article-header">
-      <a title="完整的标题" href="javascript:;" class="article-title ellipsis">Windows 平台开发打包 PyQt 程序Windows 平台开发打包 PyQt
-        程序Windows
-        平台开发打包 PyQt程序Windows 平台开发打包 PyQt 程序</a>
-      <div class="article-meta">
-        <span>
-          <i class="iconfont">&#xe7eb;</i>
-          <time>2018-05-11</time>
-        </span>
-        <span class="article-category">
-          <i class="iconfont">&#xe654;</i>
-          <a href="javascript:;">Python</a>
-        </span>
-        <span>
-          <i class="iconfont">&#xe6ad;</i>
-          <span>0</span>
-        </span>
-        <span>
-          <i class="iconfont">&#xe63b;</i>
-          <span>0</span>
-        </span>
-      </div>
-    </div>
-    <div class="article-description">
-      <p>Windows 平台打包 PyQt 程序Windows 平台打包 PyQt 程序Windows 平台打包 PyQt 程序Windows 平台打包 PyQt 程序</p>
-    </div>
-    <div class="article-footer">
-      <i class="iconfont">&#xe610;</i>
-      <a class="article-tag" href="javascript:;">javascript</a>
-      <a class="article-tag" href="javascript:;">算法</a>
-    </div>
-  </article>
-  <!-- 文章2结束 -->
+  <% } %>
   <!-- 分页 -->
   <div class="article-paginate">
     <ul class="clearfix">
@@ -84,6 +52,7 @@
     </ul>
   </div>
 </section>
+<!-- 侧边栏 -->
 <aside class="aside-container">
   <div class="user-container shadow-box">
     <div class="user-header">
@@ -100,7 +69,7 @@
           <a href="javascript:;" class="iconfont">&#xe657;</a>
         </li>
         <li>
-          <a href="javascript:;" class="iconfont">&#xe626;</a>
+          <a href="javascript:;" class="iconfont">&#xe689;</a>
         </li>
       </ul>
     </div>

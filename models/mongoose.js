@@ -6,7 +6,9 @@ const mongoose = require('mongoose');
 const dbUrl = config.dbUrl;
 
 // 连接
-mongoose.connect(dbUrl);
+mongoose.connect(dbUrl, {
+  useNewUrlParser: true
+});
 
 // 连接成功
 mongoose.connection.on('connected', function () {

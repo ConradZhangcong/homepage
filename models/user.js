@@ -1,6 +1,9 @@
+const moment = require('moment');
 const mongoose = require('./mongoose');
 
 const Schema = mongoose.Schema;
+
+moment.locale('zh-cn');
 
 /**
  * 用户实体
@@ -12,7 +15,11 @@ const userSchema = new Schema({
   email: { type: String }, // 邮箱
   phone: { type: String }, // 手机号
   sex: { type: String }, // 性别
-  createTime: { type: String } // 创建时间
+  createTime: {
+    type: Date,
+    default: Date.now,
+    get: v => moment(v).format('YYYY-MM-DD HH:mm:ss')
+  }
 });
 
 module.exports = mongoose.model('User', userSchema);

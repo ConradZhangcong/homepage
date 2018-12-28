@@ -30,8 +30,9 @@
   margin-top: 10px;
 }
 
-.article-meta span {
+.article-meta li {
   margin-right: 10px;
+  float: left;
 }
 
 .article-description {

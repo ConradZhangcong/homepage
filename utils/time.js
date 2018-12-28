@@ -1,6 +1,6 @@
 const moment = require('moment');
 
-moment.locale('zh-cn')
+moment.locale('zh-cn');
 
 module.exports = function (date, format) {
   let formatDate = date ? date : new Date();

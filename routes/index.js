@@ -2,15 +2,24 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 const userModel = require('../models/user');
+const articleModel = require('../models/article');
 const resultUtil = require('../utils/result');
 const timeUtil = require('../utils/time');
 const md5 = require('md5-node');
+const async = require('async_hooks')
 
 router.get('/', function (req, res, next) {
-  res.render('layout', {
-    pagename: 'blog',
-    username: req.session.username
-  });
+  // 查找文章列表
+  articleModel.find({}).sort({
+    _id: -1
+  }).exec(function (err, data) {
+    if (err) throw err;
+    res.render('layout', {
+      pagename: 'blog',
+      username: req.session.username,
+      articleList: data
+    });
+  })
 });
 
 router.get('/login', function (req, res, next) {
@@ -21,7 +30,7 @@ router.get('/login', function (req, res, next) {
   } else { // 尚未登录
     res.render('layout', {
       pagename: 'login',
-      title: '登录'
+      title: '登录 - Conrad的博客'
     });
   }
 });
@@ -34,7 +43,7 @@ router.get('/register', function (req, res, next) {
   } else { // 尚未登录
     res.render('layout', {
       pagename: 'register',
-      title: '注册'
+      title: '注册 - Conrad的博客'
     });
   }
 });
@@ -42,8 +51,55 @@ router.get('/register', function (req, res, next) {
 router.get('/about', function (req, res, next) {
   res.render('layout', {
     pagename: 'about',
-    title: '关于Conrad'
+    title: '关于我 - Conrad的博客'
   });
+});
+
+// router.get('/article', function (req, res, next) {
+//   // 通过id查找文章
+//   let articleId = req.query.id
+//   articleModel.findById(articleId, function (err, data) {
+//     if (err) throw err;
+//     // 增加阅读量
+//     let readingNum = data.reading + 1;
+//     articleModel.updateOne({
+//       _id: articleId
+//     }, {
+//       reading: readingNum
+//     }, function (error) {
+//       if (error) throw error;
+//       // 渲染文章
+//       res.render('layout', {
+//         pagename: 'article',
+//         title: data.title,
+//         articleDetail: data
+//       });
+//     })
+//   })
+// });
+
+router.get('/article', async function (req, res, next) {
+  // 通过id查找文章
+  let articleId = req.query.id;
+  let readingNum;
+  await articleModel.findById(articleId, function (err, data) {
+    if (err) throw err;
+    // 渲染文章
+    readingNum = data.reading + 1;
+    res.render('layout', {
+      pagename: 'article',
+      title: data.title,
+      articleDetail: data
+    });
+  })
+  // 增加阅读量
+  await articleModel.updateOne({
+    _id: articleId
+  }, {
+    reading: readingNum
+  }, function (error) {
+    if (error) throw error;
+  })
 });
 
 /**
