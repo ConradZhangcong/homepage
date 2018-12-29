@@ -5,9 +5,9 @@ var Article = require("./article.js");
 // 插入
 function insert() {
   var article = new Article({
-    title: '测试标题1',
-    describe: '测试描述1',
-    content: '222',
+    title: '测试标题6',
+    describe: '测试描述6',
+    content: '666',
     classify: 'test', // 分类
     tags: ['test', 'javascript'] // 标签
   });

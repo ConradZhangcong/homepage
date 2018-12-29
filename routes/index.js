@@ -6,20 +6,38 @@ const articleModel = require('../models/article');
 const resultUtil = require('../utils/result');
 const timeUtil = require('../utils/time');
 const md5 = require('md5-node');
-const async = require('async_hooks')
 
 router.get('/', function (req, res, next) {
-  // 查找文章列表
-  articleModel.find({}).sort({
-    _id: -1
-  }).exec(function (err, data) {
+  let id = req.query.id;
+  if (id) { // 其他页数传入id
+    // 查找文章列表
+    articleModel.find({
+        '_id': {
+          "$lt": id
+        }
+      })
+      .limit(5)
+      .sort({
+        '_id': -1
+      })
+      .exec(cb);
+  } else { // 第一页
+    articleModel.find({})
+      .limit(5)
+      .sort({
+        '_id': -1
+      })
+      .exec(cb);
+  }
+
+  function cb(err, data) {
     if (err) throw err;
     res.render('layout', {
       pagename: 'blog',
       username: req.session.username,
       articleList: data
     });
-  })
+  }
 });
 
 router.get('/login', function (req, res, next) {

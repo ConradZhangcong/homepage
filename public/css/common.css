@@ -79,7 +79,6 @@ button {
   padding: 0 110px 0 50px;
   background: rgba(0, 0, 0, 0.4);
   box-sizing: border-box;
-  border-bottom: 1px solid #52768e;
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1) 0.15s;
 }
 
@@ -100,13 +99,11 @@ button {
 
 .header-nav {
   display: inline-block;
-  position: relative;
 }
 
 .header-nav li {
   float: left;
   padding: 0 10px;
-  box-sizing: border-box;
 }
 
 .header-nav li a {
@@ -120,6 +117,7 @@ button {
 }
 
 .header-personal {
+  position: relative;
   float: right;
 }
 
@@ -160,23 +158,21 @@ button {
   float: left;
   padding: 10px 0;
   margin-left: 10px;
+  cursor: pointer;
 }
 
 .logined-img {
   width: 40px;
   height: 40px;
   border-radius: 100%;
-  cursor: pointer;
 }
 
 .logined:hover .logined-menu {
-  /* display: block; */
   opacity: 1;
   transition: all .5s;
 }
 
 .logined-menu {
-  /* display: none; */
   position: absolute;
   top: 60px;
   right: -75px;
