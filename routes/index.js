@@ -6,6 +6,7 @@ const articleModel = require('../models/article');
 const resultUtil = require('../utils/result');
 const timeUtil = require('../utils/time');
 const md5 = require('md5-node');
+const marked = require('marked');
 
 router.get('/', function (req, res, next) {
   let id = req.query.id;
@@ -102,12 +103,14 @@ router.get('/article', async function (req, res, next) {
   let readingNum;
   await articleModel.findById(articleId, function (err, data) {
     if (err) throw err;
+    let content = marked(data.content);
     // 渲染文章
     readingNum = data.reading + 1;
     res.render('layout', {
       pagename: 'article',
       title: data.title,
-      articleDetail: data
+      articleDetail: data,
+      content: content
     });
   })
   // 增加阅读量

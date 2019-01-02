@@ -1,0 +1,32 @@
+.menu-container {
+  float: left;
+  width: 270px;
+  padding: 10px 0 20px;
+  margin-right: 10px;
+}
+
+.menu-header {
+  padding: 10px 20px;
+  font-size: 18px;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.menu-list {
+  padding: 15px 15px 0;
+  font-size: 16px;
+}
+
+.menu-list li{
+  margin-bottom: 9px;
+  cursor: pointer;
+}
+
+.menu-list li:last-child{
+  margin-bottom: 0;
+}
+
+.article-container {
+  float: left;
+  width: 800px;
+  padding: 20px 25px;
+}
