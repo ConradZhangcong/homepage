@@ -9,36 +9,81 @@ const md5 = require('md5-node');
 const marked = require('marked');
 
 router.get('/', function (req, res, next) {
-  let id = req.query.id;
-  if (id) { // 其他页数传入id
-    // 查找文章列表
-    articleModel.find({
-        '_id': {
-          "$lt": id
-        }
-      })
-      .limit(5)
-      .sort({
-        '_id': -1
-      })
-      .exec(cb);
-  } else { // 第一页
-    articleModel.find({})
-      .limit(5)
-      .sort({
-        '_id': -1
-      })
-      .exec(cb);
-  }
+  res.redirect('/blog');
+})
 
-  function cb(err, data) {
-    if (err) throw err;
-    res.render('layout', {
-      pagename: 'blog',
-      username: req.session.username,
-      articleList: data
-    });
-  }
+router.get('/blog', async function (req, res, next) {
+  let articleList = [],
+    hotList = [],
+    classList = [],
+    tagList = [];
+  const total = await articleModel.find({}).count(); // 文章总数
+  const limit = 5; // 每页的文章数量
+  const pages = Math.ceil(total / limit) // 文章总页数
+  let pageNum = req.query.page; // 当前页数
+  // if (pageNum > pages || parseInt(pageNum) <= 0) res.redirect('/blog');
+  pageNum = parseInt(req.query.page) || 1;
+  // 文章列表
+  const getArticleList = new Promise((resolve, reject) => {
+    if (pageNum) { // 其他页数传入id
+      // 查找文章列表
+      articleModel.find({})
+        .skip(limit * (pageNum - 1))
+        .limit(limit)
+        .sort({
+          '_id': -1
+        })
+        .exec(callback);
+    } else { // 第一页
+      articleModel.find({})
+        .limit(limit)
+        .sort({
+          '_id': -1
+        })
+        .exec(callback);
+    }
+
+    function callback(err, data) {
+      if (err) reject(err);
+      articleList = data;
+      resolve(data);
+    }
+  })
+  // 热门文章列表
+  const getHotList = new Promise((resolve, reject) => {
+    articleModel.find({})
+      .limit(7)
+      .sort({
+        'reading': -1
+      })
+      .exec((err, data) => {
+        if (err) reject(err);
+        hotList = data;
+        resolve(data);
+      })
+  })
+  Promise.all([getArticleList, getHotList])
+    .then(result => {
+      res.render('layout', {
+        pagename: 'blog',
+        username: req.session.username,
+        articleList,
+        hotList,
+        classList,
+        tagList,
+        total,
+        pageNum,
+        pages,
+        limit,
+        jsData: {
+          pages,
+          pageNum
+        },
+      });
+    })
+    .catch(e => console.log(e))
+
+
 });
 
 router.get('/login', function (req, res, next) {
@@ -73,29 +118,6 @@ router.get('/about', function (req, res, next) {
     title: '关于我 - Conrad的博客'
   });
 });
-
-// router.get('/article', function (req, res, next) {
-//   // 通过id查找文章
-//   let articleId = req.query.id
-//   articleModel.findById(articleId, function (err, data) {
-//     if (err) throw err;
-//     // 增加阅读量
-//     let readingNum = data.reading + 1;
-//     articleModel.updateOne({
-//       _id: articleId
-//     }, {
-//       reading: readingNum
-//     }, function (error) {
-//       if (error) throw error;
-//       // 渲染文章
-//       res.render('layout', {
-//         pagename: 'article',
-//         title: data.title,
-//         articleDetail: data
-//       });
-//     })
-//   })
-// });
 
 router.get('/article', async function (req, res, next) {
   // 通过id查找文章

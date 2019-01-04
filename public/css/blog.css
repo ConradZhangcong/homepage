@@ -67,6 +67,7 @@
   float: left;
   margin-right: 5px;
   padding: 8px 10px;
+  color: #717171;
   background-color: #f5f5f5;
   border: 1px solid #aaa;
   border-radius: 4px;
@@ -75,6 +76,15 @@
 .article-paginate ul a:first-child,
 .article-paginate ul a:last-child {
   padding: 8px 12px;
+}
+
+.paginate-page-active{
+  color: #f2f2f2 !important;
+  background: #676767 !important;
+}
+
+.paginate-no-drop{
+  cursor: no-drop;
 }
 
 .aside-container {

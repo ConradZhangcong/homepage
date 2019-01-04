@@ -16,6 +16,7 @@ var app = express();
 
 app.locals.title = config.title; // 默认的title
 app.locals.username = config.username; // 配置username 配合session判断是否登录
+app.locals.jsData = {}; // 传递给外部js的数据
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

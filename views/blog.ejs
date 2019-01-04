@@ -1,6 +1,9 @@
 <!-- 博客主体部分 -->
 <section class="article-list-container">
-  <% for(var i = 0; i < articleList.length; i++) { %>
+  <% if (articleList.length === 0) { %>
+    <div>暂无文章</div>
+  <% } %>
+  <% for (var i = 0; i < articleList.length; i++) { %>
   <article class="article-container shadow-box">
     <div class="article-header">
       <a title="<%=articleList[i].title%>" href="/article?id=<%=articleList[i]._id%>" class="article-title ellipsis">
@@ -33,24 +36,25 @@
     </div>
     <div class="article-footer">
       <i class="iconfont" style="margin-right: 6px;">&#xe610;</i>
-      <% for(var j = 0; j < articleList[i].tags.length; j++) { %>
+      <% for (var j = 0; j < articleList[i].tags.length; j++) { %>
       <a class="article-tag" href="javascript:;"><%=articleList[i].tags[j]%></a>
       <% } %>
     </div>
   </article>
   <% } %>
   <!-- 分页 -->
+  <% if (total){ %>
   <div class="article-paginate">
     <ul class="clearfix">
-      <a href="javascript:;">&lt;</a>
-      <a href="javascript:;">1</a>
-      <a href="javascript:;">2</a>
-      <a href="javascript:;">3</a>
-      <a href="javascript:;">4</a>
-      <a href="javascript:;">5</a>
-      <a href="javascript:;">&gt;</a>
+      <a href="/blog?page=<%= pageNum - 1 %>" class="paginate-prev">&lt;</a>
+      <% for(var i = 1; i <= pages; i++) { %>
+      <!-- <a href="/blog?page=<%= i %>" class="paginate-page"><%= i %></a> -->
+      <a href="/blog?page=<%= i %>" class="paginate-page"><%= i %></a>
+      <% } %>
+      <a href="/blog?page=<%= pageNum + 1 %>" class="paginate-next">&gt;</a>
     </ul>
   </div>
+  <% } %>
 </section>
 <!-- 侧边栏 -->
 <aside class="aside-container">
@@ -74,6 +78,7 @@
       </ul>
     </div>
   </div>
+  <% if (hotList.length !== 0 ) { %>
   <div class="card-container shadow-box">
     <h5 class="card-title">
       <span class="card-muted">热门文章</span>
@@ -81,29 +86,17 @@
     <span></span>
     <div class="card-article">
       <ul>
-        <a href="javascript:;" title="你真的了解如何将 Nginx 配置为Web服务器吗">
-          <p class="ellipsis">你真的了解如何将 Nginx 配置为Web服务器吗你真你真你真你真</p>
-          <small>阅读量: 31783, 评论: 14</small>
+        <% for (var i = 0; i < hotList.length; i++ ) { %>
+        <a href="/article?id=<%=hotList[i]._id%>" title="<%=hotList[i].title%>">
+          <p class="ellipsis"><%=hotList[i].title%></p>
+          <small>阅读量: <%=hotList[i].reading%>, 评论: <%=hotList[i].comments%></small>
         </a>
-        <a href="" title="Git的核心概念">
-          <p>Git的核心概念</p>
-          <small>阅读量: 18701, 评论: 32</small>
-        </a>
-        <a href="" title="科学上网 N 种姿势">
-          <p>科学上网 N 种姿势</p>
-          <small>阅读量: 14645, 评论: 19</small>
-        </a>
-        <a href="" title="Laravel的核心概念">
-          <p>Laravel的核心概念</p>
-          <small>阅读量: 14016, 评论: 34</small>
-        </a>
-        <a href="" 一步一步教你部署自己的Laravel应用程序到服务器>
-          <p>一步一步教你部署自己的Laravel应用程序到服务器</p>
-          <small>阅读量: 12013, 评论: 19</small>
-        </a>
+        <% } %>
       </ul>
     </div>
   </div>
+  <% } %>
+  <% if (classList.length !== 0 ) { %>
   <div class="card-container shadow-box">
     <h5 class="card-title">
       <span class="card-muted">分类</span>
@@ -122,6 +115,8 @@
       </ul>
     </div>
   </div>
+  <% } %>
+  <% if (tagList.length !== 0 ) { %>
   <div class="card-container shadow-box">
     <h5 class="card-title">
       <span class="card-muted">标签</span>
@@ -140,4 +135,5 @@
       </ul>
     </div>
   </div>
+  <% } %>
 </aside>
