@@ -180,6 +180,10 @@ router.post('/doRegister', function (req, res, next) {
   userData.password = md5(userData.password); // 密码进行md5加密
   userModel.create(userData, (err, data) => {
     if (err) throw err;
+    // 注册成功 自动登录
+    req.session.username = userData.username;
+    req.app.locals.username = userData.username;
+
     resultUtil.msg = "注册成功";
     res.send(resultUtil);
     // 添加记录到日志文件 register.log
@@ -202,14 +206,23 @@ router.post('/isUser', function (req, res, next) {
   }, (err, data) => {
     if (err) throw err;
     if (data.length === 0) { // 邮箱未注册
-      resultUtil.msg = "邮箱未注册,添加数据";
       res.send(resultUtil)
     } else { // 邮箱已被注册
       resultUtil.code = 0;
       resultUtil.msg = "邮箱已被注册";
-      res.send(resultUtil)
+      res.send(resultUtil);
     }
   })
+})
+
+/**
+ * 退出登录
+ */
+router.post('/logout', function (req, res, next) {
+  req.session.username = '';
+  req.app.locals.username = '';
+  resultUtil.msg = "成功退出登录";
+  res.send(resultUtil);
 })
 
 module.exports = router;

@@ -14,18 +14,16 @@
       </li>
       <% if(username) { %>
       <div class="logined">
-        <img
-          src="http://thyrsi.com/t6/642/1545833491x2890211744.jpg"
-          alt=""
-          class="logined-img"
-        />
+        <img src="/img/default-avator.jpg" alt="" class="logined-img" />
         <div class="logined-menu">
-          <p><%=username%></p>
+          <p>
+            <%=username%>
+          </p>
           <ul>
             <a href="javscript:;"><i class="iconfont">&#xe602;</i>个人中心</a>
             <a href="javscript:;"><i class="iconfont">&#xe618;</i>消息中心</a>
           </ul>
-          <div class="logined-footer">退出登录</div>
+          <div class="logined-footer" id="btn-logout">退出登录</div>
         </div>
       </div>
       <% } else { %>
@@ -34,5 +32,7 @@
       <% } %>
     </div>
   </div>
-  <div class="header-main"><h1>just going go</h1></div>
+  <div class="header-main">
+    <h1>just going go</h1>
+  </div>
 </header>

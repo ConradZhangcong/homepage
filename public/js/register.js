@@ -1,4 +1,4 @@
-$('#register-button').click(function () {
+$('#btn-register').click(function () {
   let data = {
     email: $('#register-email').val(),
     username: $('#register-username').val(),
@@ -7,26 +7,41 @@ $('#register-button').click(function () {
   // 验证邮箱格式
   let regEmail = new RegExp('^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$');
   if (!regEmail.test(data.email)) {
-    console.log('邮箱格式不正确');
+    layer.msg('邮箱格式不正确', {
+      icon: 0
+    });
     return false;
   }
   if (data.email === '') {
-    console.log('请输入邮箱')
+    layer.msg('请输入邮箱', {
+      icon: 0
+    });
     return false;
   } else if (data.username === '') {
-    console.log('请输入用户名')
+    layer.msg('请输入用户名', {
+      icon: 0
+    });
     return false;
   } else if (data.username === '') {
-    console.log('请输入密码')
+    layer.msg('请输入密码', {
+      icon: 0
+    });
     return false;
   } else if ($('#register-repassword').val() === '') {
-    console.log('请输入再次输入密码')
+    layer.msg('请输入再次输入密码', {
+      icon: 0
+    });
     return false;
   }
-  if (data.password !== $('#register-password').val()) {
-    console.log('两次输入的密码不一致')
+  if (data.password !== $('#register-repassword').val()) {
+    layer.msg('两次输入的密码不一致', {
+      icon: 0
+    });
     return false;
   }
+  layer.open({
+    type: 3
+  });
   $.ajax({
     type: 'post',
     url: '/isUser',
@@ -40,26 +55,46 @@ $('#register-button').click(function () {
           url: '/doRegister',
           data: data,
           success: function (res) {
+            layer.closeAll('loading');
             if (res.code === 200) {
-              console.log('注册成功');
+              layer.msg('注册成功', {
+                icon: 1,
+                time: 1000
+              });
+              setTimeout(function () {
+                window.location.href = '/';
+              }, 1000);
               return false;
             } else {
-              console.log('注册失败');
+              layer.msg(res.msg, {
+                icon: 2
+              });
               return false;
             }
           },
           error: function (error) {
             console.log(error);
+            layer.closeAll('loading');
+            layer.msg('服务器繁忙', {
+              icon: 2
+            });
             return false;
           }
         })
       } else {
-        console.log(res.msg)
+        layer.closeAll('loading');
+        layer.msg(res.msg, {
+          icon: 2
+        })
         return false;
       }
     },
     error: function (error) {
       console.log(error);
+      layer.closeAll('loading');
+      layer.msg('服务器繁忙', {
+        icon: 2
+      });
       return false;
     }
   })

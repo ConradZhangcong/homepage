@@ -5,6 +5,18 @@
     <li>456</li>
   </ul>
 </div>
-<article class="article-container shadow-box">
-  <%- content %>
-</article>
+<div class="content-container">
+  <article class="article-container shadow-box" style="height: 1000px;">
+    <%- content %>
+  </article>
+  <div class="comment-container shadow-box">
+    <div class="comment-list comment-none">暂无评论</div>
+    <div class="comment-list"></div>
+
+    <div class="comment-form">
+      <label class="comment-label">请登录后进行评论</label>
+      <textarea class="comment-input" placeholder="评论通过审核后显示"></textarea>
+      <button class="comment-btn">回复</button>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-$('.login-button').click(function () {
+$('#btn-login').click(function () {
   let data = {
     email: $('#login-email').val(),
     password: $('#login-password').val()
@@ -6,35 +6,54 @@ $('.login-button').click(function () {
   // 验证邮箱格式
   let regEmail = new RegExp('^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$');
   if (!regEmail.test(data.email)) {
-    console.log('邮箱格式不正确');
+    layer.msg('邮箱格式不正确', {
+      icon: 0
+    });
     return false;
   }
   if (data.email === '') {
-    console.log('请输入邮箱!');
+    layer.msg('请输入邮箱!', {
+      icon: 0
+    });
     return false;
   } else if (data.password === '') {
-    console.log('请输入密码!');
+    layer.msg('请输入密码!', {
+      icon: 0
+    });
     return false;
   }
+  layer.open({
+    type: 3
+  });
   $.ajax({
     type: 'post',
     url: '/doLogin',
     data: data,
-    success: function (data) {
-      console.log(data);
-      if (data.code === 200) {
-        console.log('登录成功');
-        // self.location = document.referrer; // 返回上一个页面
-        // console.log(document.referrer)
-        window.location.href = '/'
+    success: function (res) {
+      layer.closeAll('loading');
+      if (res.code === 200) {
+        layer.msg('登录成功', {
+          icon: 1,
+          time: 1000,
+          shade: 0.3
+        });
+        setTimeout(function () {
+          window.location.href = '/'
+        }, 1000);
         return false;
       } else {
-        console.log(data.msg);
+        layer.msg(res.msg, {
+          icon: 2
+        });
         return false;
       }
     },
     error: function (error) {
       console.log(error);
+      layer.closeAll('loading');
+      layer.msg('服务器繁忙', {
+        icon: 2
+      });
       return false;
     }
   })
