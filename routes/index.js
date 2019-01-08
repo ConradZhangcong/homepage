@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
-const userModel = require('../models/user');
-const articleModel = require('../models/article');
 const resultUtil = require('../utils/result');
 const timeUtil = require('../utils/time');
 const md5 = require('md5-node');
 const marked = require('marked');
+
+const userModel = require('../models/user');
+const articleModel = require('../models/article');
 
 router.get('/', function (req, res, next) {
   res.redirect('/blog');
@@ -82,8 +83,6 @@ router.get('/blog', async function (req, res, next) {
       });
     })
     .catch(e => console.log(e))
-
-
 });
 
 router.get('/login', function (req, res, next) {
