@@ -16,7 +16,7 @@ th, td { /* table elements 表格元素 */
 
 body,
 button, input, select, textarea {
-  font: 14px/1 -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+  font: 14px/1.5 -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
 }
 
 /* 默认颜色 */
