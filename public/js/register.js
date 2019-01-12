@@ -39,63 +39,43 @@ $('#btn-register').click(function () {
     });
     return false;
   }
-  layer.open({
-    type: 3
-  });
-  $.ajax({
-    type: 'post',
+  new AjaxRequest({
     url: '/isUser',
-    data: {
+    params: {
       email: data.email
     },
-    success: function (res) {
-      if (res.code === 200) { // 邮箱未注册,添加数据
-        $.ajax({
-          type: 'post',
-          url: '/doRegister',
-          data: data,
-          success: function (res) {
-            layer.closeAll('loading');
-            if (res.code === 200) {
-              layer.msg('注册成功', {
-                icon: 1,
-                time: 1000
-              });
-              setTimeout(function () {
-                window.location.href = '/';
-              }, 1000);
-              return false;
-            } else {
-              layer.msg(res.msg, {
-                icon: 2
-              });
-              return false;
-            }
-          },
-          error: function (error) {
-            console.log(error);
-            layer.closeAll('loading');
-            layer.msg('服务器繁忙', {
-              icon: 2
-            });
-            return false;
-          }
-        })
-      } else {
-        layer.closeAll('loading');
-        layer.msg(res.msg, {
-          icon: 2
-        })
-        return false;
-      }
-    },
-    error: function (error) {
-      console.log(error);
-      layer.closeAll('loading');
-      layer.msg('服务器繁忙', {
-        icon: 2
-      });
-      return false;
+    callback: function (res) {
+      new AjaxRequest({
+        url: '/doRegister',
+        params: data,
+        callback: function (res) {
+          layer.msg('注册成功', {
+            icon: 1,
+            time: 1000,
+            shade: 0.1
+          });
+          setTimeout(function () {
+            window.location.href = '/';
+          }, 1000);
+        }
+      })
     }
   })
 })
+
+function doRegister(data) {
+  new AjaxRequest({
+    url: '/doRegister',
+    params: data,
+    callback: function (res) {
+      layer.msg('注册成功', {
+        icon: 1,
+        time: 1000,
+        shade: 0.1
+      });
+      setTimeout(function () {
+        window.location.href = '/';
+      }, 1000);
+    }
+  })
+}

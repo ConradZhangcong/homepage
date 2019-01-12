@@ -13,6 +13,9 @@
   <link rel="stylesheet" type="text/css" href="/css/iconfont.css" />
   <link rel="stylesheet" type="text/css" href="/lib/layer/theme/default/layer.css" />
   <%- '<link rel="stylesheet" type="text/css" href="/css/' + pagename + '.css" />' %>
+  <% if(pagename === 'article') { %>
+  <link rel="stylesheet" type="text/css" href="/css/markdown.css">
+  <% } %>
   <script>
     let jsData = '<%- JSON.stringify(jsData) %>';
   </script>
@@ -27,8 +30,9 @@
   </main>
 
   <%- include("./common/footer.ejs") %>
-  <script src="/js/jquery.min.js"></script>
+  <script src="/lib/jquery.min.js"></script>
   <script src="/lib/layer/layer.js"></script>
+  <script src="/js/utils/ajax.js"></script>
   <script src="/js/common.js"></script>
   <%- '<script src="/js/'+pagename+'.js"></script>' %>
 </body>

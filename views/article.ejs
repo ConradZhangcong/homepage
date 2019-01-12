@@ -6,17 +6,33 @@
   </ul>
 </div>
 <div class="content-container">
-  <article class="article-container shadow-box" style="height: 1000px;">
-    <%- content %>
+  <article class="article-container shadow-box markdown-body">
+    <%- articleContent %>
+    <div class="article-footer">
+      <p>发表时间: <%=articleDetail.createTime%></p>
+      <p>修改时间: <%=articleDetail.modifyTime%></p>
+      <p>文章分类: <%=articleDetail.classify%></p>
+      <p>文章标签: <%=articleDetail.tags%></p>
+      <p>评论数: <%=articleDetail.comments%></p>
+      <p>阅读量: <%=articleDetail.reading%></p>
+      <p>收藏: <%=articleDetail.favourite%></p>
+    </div>
   </article>
   <div class="comment-container shadow-box">
     <div class="comment-list comment-none">暂无评论</div>
     <div class="comment-list"></div>
 
     <div class="comment-form">
-      <label class="comment-label">请登录后进行评论</label>
-      <textarea class="comment-input" placeholder="评论通过审核后显示"></textarea>
-      <button class="comment-btn">回复</button>
+      <label class="comment-label">评论支持Markdown</label>
+      <textarea
+        class="comment-input"
+        id="comment-content"
+        placeholder="评论通过审核后显示"
+      ></textarea>
+      <button class="comment-btn" id="btn-comment">回复</button> <% if(
+      JSON.stringify(user) === '{}' ){ %>
+      <div class="comment-mask">请登录后进行评论!</div>
+      <% } else { %> <% } %>
     </div>
   </div>
 </div>

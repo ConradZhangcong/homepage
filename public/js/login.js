@@ -22,39 +22,19 @@ $('#btn-login').click(function () {
     });
     return false;
   }
-  layer.open({
-    type: 3
-  });
-  $.ajax({
-    type: 'post',
+  // 发送登录ajax
+  new AjaxRequest({
     url: '/doLogin',
-    data: data,
-    success: function (res) {
-      layer.closeAll('loading');
-      if (res.code === 200) {
-        layer.msg('登录成功', {
-          icon: 1,
-          time: 1000,
-          shade: 0.3
-        });
-        setTimeout(function () {
-          window.location.href = '/'
-        }, 1000);
-        return false;
-      } else {
-        layer.msg(res.msg, {
-          icon: 2
-        });
-        return false;
-      }
-    },
-    error: function (error) {
-      console.log(error);
-      layer.closeAll('loading');
-      layer.msg('服务器繁忙', {
-        icon: 2
+    params: data,
+    callback: function (res) {
+      layer.msg('登录成功', {
+        icon: 1,
+        time: 1000,
+        shade: 0.1
       });
-      return false;
+      setTimeout(function () {
+        window.location.href = '/'
+      }, 1000);
     }
   })
 })

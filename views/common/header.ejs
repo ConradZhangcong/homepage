@@ -8,16 +8,16 @@
     </ul>
     <div class="header-personal header-nav">
       <li>
-        <div class="header-input-container">
+        <form class="header-input-container">
           <input type="text" placeholder="搜索文章" class="header-input" />
-        </div>
+        </form>
       </li>
-      <% if(username) { %>
+      <% if( JSON.stringify(user) !== '{}' ) { %>
       <div class="logined">
         <img src="/img/default-avator.jpg" alt="" class="logined-img" />
         <div class="logined-menu">
           <p>
-            <%=username%>
+            <%=user.username%>
           </p>
           <ul>
             <a href="javscript:;"><i class="iconfont">&#xe602;</i>个人中心</a>

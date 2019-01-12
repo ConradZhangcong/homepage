@@ -99,6 +99,7 @@ button {
 
 .header-nav {
   display: inline-block;
+  list-style: none;
 }
 
 .header-nav li {
@@ -195,6 +196,7 @@ button {
 
 .logined-menu ul {
   padding: 10px 0 0 0;
+  list-style: none;
 }
 
 .logined-menu ul a {

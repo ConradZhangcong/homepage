@@ -28,6 +28,7 @@
 
 .article-meta {
   margin-top: 10px;
+  list-style: none;
 }
 
 .article-meta li {
@@ -136,6 +137,7 @@
 .user-footer ul {
   display: inline-block;
   padding: 30px 20px 20px;
+  list-style: none;
 }
 
 .user-footer ul li {

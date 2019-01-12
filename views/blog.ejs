@@ -6,7 +6,10 @@
   <% for (var i = 0; i < articleList.length; i++) { %>
   <article class="article-container shadow-box">
     <div class="article-header">
-      <a title="<%=articleList[i].title%>" href="/article?id=<%=articleList[i]._id%>" class="article-title ellipsis">
+      <a class="article-title ellipsis"
+        title="<%=articleList[i].title%>" 
+        href="/article?id=<%=articleList[i]._id%>" 
+        target="_blank">
         <%=articleList[i].title%></a>
       <ul class="article-meta clearfix">
         <li>
