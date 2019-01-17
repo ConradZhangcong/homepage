@@ -24,7 +24,7 @@ $('#btn-login').click(function () {
   }
   // 发送登录ajax
   new AjaxRequest({
-    url: '/doLogin',
+    url: '/user/login',
     params: data,
     callback: function (res) {
       layer.msg('登录成功', {

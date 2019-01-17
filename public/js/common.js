@@ -1,7 +1,7 @@
 // 退出登录
 $('#btn-logout').click(function () {
   new AjaxRequest({
-    url: '/logout',
+    url: '/user/logout',
     callback: function (res) {
       layer.msg('成功退出登录!', {
         icon: 1,

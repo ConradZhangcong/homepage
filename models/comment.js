@@ -9,7 +9,7 @@ require('./user')
 /* 评论实体 */
 const CommentSchema = new Schema(
   {
-    articleId: { type: ObjectId }, // 文章id
+    articleId: { type: ObjectId, ref: 'Article' }, // 文章id
     fromUId: { type: ObjectId, ref: 'User' }, // 发出评论者的id
     toUId: { type: ObjectId }, // 回复他人的id
     content: { type: String }, // 评论内容
@@ -36,4 +36,4 @@ CommentSchema.index({ articleId: -1 })
 CommentSchema.index({ fromUId: -1 })
 CommentSchema.index({ toUId: -1 })
 
-mongoose.model('Comment', CommentSchema)
+const Comment = mongoose.model('Comment', CommentSchema)
