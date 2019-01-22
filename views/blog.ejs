@@ -46,15 +46,15 @@
   </article>
   <% } %>
   <!-- 分页 -->
-  <% if (total){ %>
+  <% if (queryList.total){ %>
   <div class="article-paginate">
     <ul class="clearfix">
-      <a href="/blog?page=<%= pageNum - 1 %>" class="paginate-prev">&lt;</a>
-      <% for(var i = 1; i <= pages; i++) { %>
+      <a href="/blog?page=<%= queryList.page - 1 %>" class="paginate-prev">&lt;</a>
+      <% for(var i = 1; i <= queryList.pages; i++) { %>
       <!-- <a href="/blog?page=<%= i %>" class="paginate-page"><%= i %></a> -->
       <a href="/blog?page=<%= i %>" class="paginate-page"><%= i %></a>
       <% } %>
-      <a href="/blog?page=<%= pageNum + 1 %>" class="paginate-next">&gt;</a>
+      <a href="/blog?page=<%= queryList.page + 1 %>" class="paginate-next">&gt;</a>
     </ul>
   </div>
   <% } %>

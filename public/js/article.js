@@ -1,4 +1,5 @@
 let articleData = JSON.parse(jsData)
+console.log(articleData)
 $("#btn-comment").click(function () {
   var content = $('#comment-content').val()
   if (!content) {
@@ -9,11 +10,11 @@ $("#btn-comment").click(function () {
     return false;
   }
   new AjaxRequest({
-    url: '/article/comment',
+    url: '/comment/publish',
     params: {
       content,
       articleId: articleData.articleId,
-      fromUId: articleData.fromUId
+      fromUId: articleData.user._id
     },
     callback: function (res) {
       $('#comment-content').val('');

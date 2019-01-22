@@ -37,4 +37,4 @@ const ArticleSchema = new Schema(
 ArticleSchema.plugin(BaseModel)
 ArticleSchema.index({ reading: -1 })
 
-mongoose.model('Article', ArticleSchema)
+const Article = mongoose.model('Article', ArticleSchema)

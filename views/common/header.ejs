@@ -12,13 +12,14 @@
           <input type="text" placeholder="搜索文章" class="header-input" />
         </form>
       </li>
-      <% if( JSON.stringify(user) !== '{}' ) { %>
+      <% if( !user ) { %>
+      <li><a href="/login" class="header-button">登录</a></li>
+      <li><a href="/register" class="header-button">注册</a></li>
+      <% } else { %>
       <div class="logined">
         <img src="/img/default-avator.jpg" alt="" class="logined-img" />
         <div class="logined-menu">
-          <p>
-            <%=user.username%>
-          </p>
+          <p><%=user.username%></p>
           <ul>
             <a href="javscript:;"><i class="iconfont">&#xe602;</i>个人中心</a>
             <a href="javscript:;"><i class="iconfont">&#xe618;</i>消息中心</a>
@@ -26,13 +27,8 @@
           <div class="logined-footer" id="btn-logout">退出登录</div>
         </div>
       </div>
-      <% } else { %>
-      <li><a href="/login" class="header-button">登录</a></li>
-      <li><a href="/register" class="header-button">注册</a></li>
       <% } %>
     </div>
   </div>
-  <div class="header-main">
-    <h1>just going go</h1>
-  </div>
+  <div class="header-main"><h1>just going go</h1></div>
 </header>

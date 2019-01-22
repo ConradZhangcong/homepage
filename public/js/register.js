@@ -40,32 +40,19 @@ $('#btn-register').click(function () {
     return false;
   }
   new AjaxRequest({
-    url: '/isUser',
+    url: '/user/isUser',
     params: {
       email: data.email
     },
     callback: function (res) {
-      new AjaxRequest({
-        url: '/doRegister',
-        params: data,
-        callback: function (res) {
-          layer.msg('注册成功', {
-            icon: 1,
-            time: 1000,
-            shade: 0.1
-          });
-          setTimeout(function () {
-            window.location.href = '/';
-          }, 1000);
-        }
-      })
+      doRegister(data)
     }
   })
 })
 
 function doRegister(data) {
   new AjaxRequest({
-    url: '/doRegister',
+    url: '/user/register',
     params: data,
     callback: function (res) {
       layer.msg('注册成功', {
