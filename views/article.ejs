@@ -1,12 +1,10 @@
 <div class="menu-container shadow-box">
   <div class="menu-header">目录</div>
-  <ul class="menu-list">
-    <li>123</li>
-    <li>456</li>
-  </ul>
+  <ul class="menu-list"></ul>
 </div>
 <div class="content-container">
   <article class="article-container shadow-box markdown-body">
+    <div class="article-title"><%= articleDetail.title %></div>
     <%- articleContent %>
     <div class="article-footer">
       <p>发表时间: <%=articleDetail.createTime%></p>
@@ -26,7 +24,8 @@
     <div class="comment-list">
       <% for(var i=0; i<(commentList.length); i++){ %>
       <div class="comment-header">
-        <span><%=commentList[i].fromUId.avator%></span> <span><%=commentList[i].fromUId.username%></span>
+        <span><%=commentList[i].fromUId.avator%></span>
+        <span><%=commentList[i].fromUId.username%></span>
         <span><%=commentList[i].createTime%></span>
       </div>
       <div class="comment-main"><%=commentList[i].content%></div>
