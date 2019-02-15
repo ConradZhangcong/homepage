@@ -26,14 +26,28 @@
   margin-bottom: 0;
 }
 
+.menu-list li a {
+  color: #333;
+}
+
+.menu-list li a:hover {
+  text-decoration: underline;
+}
+
 .content-container {
   width: 800px;
-  float: left;
+  float: right;
 }
 
 .article-container {
   padding: 20px 25px 0;
   margin-bottom: 20px;
+}
+
+.article-title{
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
 }
 
 .article-footer {
