@@ -1,8 +1,9 @@
 .menu-container {
+  position: fixed;
+  top: 300px;
   float: left;
   width: 270px;
   padding: 10px 0 20px;
-  margin-right: 10px;
 }
 
 .menu-header {
@@ -19,19 +20,16 @@
 
 .menu-list li {
   margin-bottom: 9px;
+  color: #333;
   cursor: pointer;
+}
+
+.menu-list li:hover {
+  text-decoration: underline;
 }
 
 .menu-list li:last-child {
   margin-bottom: 0;
-}
-
-.menu-list li a {
-  color: #333;
-}
-
-.menu-list li a:hover {
-  text-decoration: underline;
 }
 
 .content-container {
@@ -44,7 +42,7 @@
   margin-bottom: 20px;
 }
 
-.article-title{
+.article-title {
   font-size: 36px;
   font-weight: bold;
   text-align: center;

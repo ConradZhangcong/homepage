@@ -24,8 +24,8 @@
     <div class="comment-list">
       <% for(var i=0; i<(commentList.length); i++){ %>
       <div class="comment-header">
-        <span><%=commentList[i].fromUId.avator%></span>
-        <span><%=commentList[i].fromUId.username%></span>
+        <a href="javascript:;"><%=commentList[i].fromUId.username%></a>
+        <em>•</em>
         <span><%=commentList[i].createTime%></span>
       </div>
       <div class="comment-main"><%=commentList[i].content%></div>
