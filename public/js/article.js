@@ -1,21 +1,32 @@
-// 文章数据详情
-const articleData = JSON.parse(jsData)
+const articleData = JSON.parse(jsData) // 文章数据详情
+const oMeunContainer = document.querySelector('.menu-container') // 目录容器
+const oMenu = document.querySelector('.menu-list') // 目录列表ul
+const menuList = $('.article-container>h1') // 文章标题列表
 
 // 动态渲染目录
-let menuList = $('.article-container>h1')
 if (menuList.length === 0) {
   const oMain = document.querySelector('.main-container')
   const oContainer = document.querySelector('.menu-container')
   oMain.removeChild(oContainer)
 } else {
-  let oMenu = document.querySelector('.menu-list')
   for (let i = 0; i < menuList.length; i++) {
     let oLi = document.createElement('li')
-    let oA = document.createElement('a')
-    oA.href = '#' + menuList[i].id
-    oA.innerHTML = menuList[i].innerText
-    oLi.appendChild(oA)
+    oLi.innerHTML = menuList[i].innerText
     oMenu.appendChild(oLi)
+  }
+}
+
+// 点击目录跳转
+for (let i = 0; i < oMenu.childNodes.length; i++) {
+  oMenu.childNodes[i].onclick = function moveto() {
+    let currentScroll = document.documentElement.scrollTop || document.body.scrollTop
+    let speed = Math.floor((menuList[i].offsetTop - currentScroll) / 3)
+    if (speed !== 0) {
+      requestAnimationFrame(moveto)
+      scrollTo(0, currentScroll + speed)
+    } else {
+      scrollTo(0, menuList[i].offsetTop)
+    }
   }
 }
 
@@ -44,4 +55,10 @@ $('#btn-comment').click(function() {
       })
     }
   })
+})
+
+window.addEventListener('scroll', function() {
+  let currentScroll = document.documentElement.scrollTop || document.body.scrollTop
+  oMeunContainer.style.top = currentScroll > 260 ? '40px' : 300 - currentScroll + 'px'
+  oBackTop.style.display = currentScroll > 260 ? 'block' : 'none'
 })
