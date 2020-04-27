@@ -1,0 +1,16 @@
+body {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+#full-page-container {
+  position: relative;
+  top: -100vh;
+  /* 通过document.documentElement.clientHeight来设置高度 */
+  height: 100vh;
+}
+
+.full-page-content {
+  height: 100%;
+}
