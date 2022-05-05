@@ -4,6 +4,8 @@ import { defineConfig, normalizePath } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 import autoprefixer from "autoprefixer";
+import viteEslint from "vite-plugin-eslint";
+import viteStylelint from "@amatlash/vite-plugin-stylelint";
 
 const resolvePath = (p) => path.resolve(__dirname, p);
 
@@ -12,7 +14,7 @@ const resolvePath = (p) => path.resolve(__dirname, p);
 const variablePath = normalizePath(resolvePath("/src/styles/variable.scss"));
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), viteEslint(), viteStylelint({ exclude: /node_modules/ })],
   css: {
     modules: {
       // 一般我们可以通过 generateScopedName 属性来对生成的类名进行自定义
