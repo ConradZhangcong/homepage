@@ -24,5 +24,11 @@ module.exports = {
     "prettier/prettier": "error",
     semi: ["error", "always"],
     "react/react-in-jsx-scope": 0,
+    "@typescript-eslint/no-non-null-assertion": 0,
+  },
+  settings: {
+    react: {
+      version: "detect",
+    },
   },
 };
