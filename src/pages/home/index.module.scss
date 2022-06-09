@@ -1,7 +1,7 @@
-// @import "../../styles/variable";
+.container {
+  padding: 10px 16px;
 
-.test {
-  color: $common-font-color;
-  text-decoration: dashed;
-  background-color: $common-bg-color;
+  p {
+    margin-bottom: 12px;
+  }
 }

@@ -36,4 +36,14 @@ export default defineConfig({
       ],
     },
   },
+  resolve: {
+    // 别名配置
+    alias: {
+      "@components": resolvePath("src/components"),
+      "@utils": resolvePath("src/utils"),
+    },
+  },
+  server: {
+    host: "0.0.0.0",
+  },
 });

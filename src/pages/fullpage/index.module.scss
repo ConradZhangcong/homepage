@@ -1,0 +1,30 @@
+.visiable-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  .container {
+    position: relative;
+    top: 0;
+    height: 100vh;
+
+    .page {
+      height: 100%;
+      padding: 200px 0;
+      font-size: 36px;
+      text-align: center;
+    }
+
+    .pagea {
+      background-color: #bcffff;
+    }
+
+    .pageb {
+      background-color: #ff9c9c;
+    }
+
+    .pagec {
+      background-color: #a8ff9f;
+    }
+  }
+}
