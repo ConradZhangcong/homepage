@@ -1,7 +1,21 @@
 .container {
   padding: 10px 16px;
 
-  p {
-    margin-bottom: 12px;
+  .line {
+    margin-bottom: 18px;
+  }
+
+  h2 {
+    border-bottom: 1px solid #000;
+  }
+}
+
+.target-container {
+  .target-icon {
+    margin: 0 5px;
+
+    &:visited {
+      color: #00f;
+    }
   }
 }
