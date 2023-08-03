@@ -49,7 +49,7 @@
     "stylelint-prettier": "^2.0.0",
     "typescript": "^4.7.3",
     "utopia-scripts": "^0.1.2",
-    "vite": "^2.9.10",
+    "vite": "^2.9.16",
     "vite-plugin-eslint": "^1.6.1"
   }
 }
