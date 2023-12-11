@@ -1,9 +1,16 @@
-import Home from "./pages/home";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/home";
+import ToolRoomPage from "./pages/toolroom";
 
 function App() {
   return (
     <div className="App">
-      <Home />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/toolroom" element={<ToolRoomPage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

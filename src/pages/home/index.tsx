@@ -1,8 +1,12 @@
+import { useNavigate } from "react-router-dom";
+
 import TargetList from "./TargetList";
 
 import styles from "./index.module.scss";
 
-const Home = () => {
+const HomePage = () => {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.container}>
       <h2 className={styles["line"]}>Hi, here is conrad</h2>
@@ -18,8 +22,15 @@ const Home = () => {
           <strong>Outlook</strong>
         </a>
       </p>
+      <button
+        onClick={() => {
+          navigate("/toolroom");
+        }}
+      >
+        toolroom
+      </button>
     </div>
   );
 };
 
-export default Home;
+export default HomePage;
