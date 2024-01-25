@@ -1,0 +1,59 @@
+# http://editorconfig.org
+
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = true
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.json]
+indent_style = space
+indent_size = 2
+
+[*.js]
+indent_style = space
+indent_size = 2
+quote_type = single
+
+[*.jsx]
+indent_style = space
+indent_size = 2
+quote_type = single
+
+[*.ts]
+indent_style = space
+indent_size = 2
+
+[*.tsx]
+indent_style = space
+indent_size = 2
+
+[*.css]
+indent_style = space
+indent_size = 2
+
+[*.scss]
+indent_style = space
+indent_size = 2
+
+# Configurations for .html and .json files
+[*.{html,json}]
+indent_size = 2
+
+# EditorConfig plugin will ignore the following section if it doesn't recognize the "ij_" properties
+# These settings are IntelliJ IDEA-specific; other editors may not support them
+
+[*.{js,jsx,ts,tsx}]
+ij_javascript_space_after_type_colon = true
+ij_javascript_space_before_function_left_parenth = false
+ij_javascript_space_inside_imports = true
+ij_javascript_space_inside_object_literal_braces = true
+ij_javascript_space_inside_object_type_braces = true
+ij_javascript_space_inside_single_line_comment = true

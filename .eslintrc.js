@@ -21,7 +21,7 @@ module.exports = {
   },
   plugins: ["react", "@typescript-eslint", "prettier"],
   rules: {
-    "prettier/prettier": "error",
+    "prettier/prettier": ["error", { endOfLine: "auto" }],
     semi: ["error", "always"],
     "react/react-in-jsx-scope": 0,
     "@typescript-eslint/no-non-null-assertion": 0,
