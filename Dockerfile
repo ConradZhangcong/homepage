@@ -1,26 +1,25 @@
-# 选择一个基础镜像
-FROM node:latest
+# --- Build Stage ---
+FROM node:20-alpine AS builder
 
-# 设置工作目录
 WORKDIR /app
 
-# 复制项目文件到工作目录
-COPY . /app
+# 先复制依赖相关文件，利用 Docker 缓存层
+COPY package.json pnpm-lock.yaml ./
 
-# 使用pnpm 安装依赖
-RUN npm install -g pnpm
-RUN pnpm install
-# 构建项目
+RUN corepack enable && pnpm install --frozen-lockfile
+
+COPY . .
 RUN pnpm build
 
-# 选择一个运行时镜像
-FROM nginx:latest
+# --- Production Stage ---
+FROM nginx:alpine
 
-# 将构建的静态文件复制到 Nginx 服务的目录
-COPY --from=0 /app/dist /usr/share/nginx/html
+# 复制自定义 nginx 配置
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# 暴露端口
-EXPOSE 50000
+# 复制构建产物
+COPY --from=builder /app/dist /usr/share/nginx/html
 
-# 启动 Nginx 服务
+EXPOSE 80
+
 CMD ["nginx", "-g", "daemon off;"]
