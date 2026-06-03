@@ -41,3 +41,4 @@
 
 - **SCSS @use 冲突**：Vite 配置了 `additionalData` 全局注入 `@import variable.scss`，所以模块 SCSS 文件里不能再写 `@use`，否则构建报错。直接使用变量即可，无需 import/use。
 - **Prettier 格式**：项目启用了 eslint-plugin-prettier，单行 JSX 文本不能换行，否则构建失败。
+- **Stylelint 检查**：每次修改 SCSS/CSS 文件后必须运行 stylelint 检查，确保属性顺序、颜色函数语法等符合规范。

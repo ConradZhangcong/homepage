@@ -10,6 +10,8 @@
 
 使用 React + TypeScript + SCSS + Vite。
 
+样式规范使用 Stylelint 进行检查，配置了属性顺序（`order/properties-order`）、现代颜色函数语法（`color-function-notation`）和百分比 alpha 值（`alpha-value-notation`）等规则。每次修改样式文件后需运行 stylelint 验证。
+
 ## Alternatives
 
 初始化时未做详细对比，后续重大变更需补充 ADR。
