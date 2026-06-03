@@ -1,0 +1,13 @@
+---
+description: TypeScript 编码规范
+globs: "**/*.ts,**/*.tsx"
+alwaysApply: false
+---
+
+# TypeScript 规范
+
+- 禁止 any，用 unknown + 类型守卫
+- async 函数必须有 try/catch
+- interface 优于 type（除 union 类型）
+- 导出的函数必须有 JSDoc
+- 枚举值用 const enum
