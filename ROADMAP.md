@@ -27,8 +27,8 @@
 
 | 项 | 值 |
 |---|---|
-| 当前 Phase | **Phase 0 · 文档基建** |
-| 下一 Phase | Phase 1 · [填入下一阶段名称] |
+| 当前 Phase | **Phase 1 · 主页整体重构** |
+| 下一 Phase | Phase 2 · [待规划] |
 | 上线版本 | 未上线 |
 | 最后更新 | 2026-06-03 |
 
@@ -39,8 +39,8 @@
 | Phase | 名称 | 状态 | 时长（预估） | 前置 |
 |-------|------|------|-----------|------|
 | **0** | 文档基建 | ✅ 完成 | 0.5 天 | — |
-| **1** | [第一个阶段名称] | ⏸ 待启动 | [预估] | Phase 0 关门 |
-| **2** | [第二个阶段名称] | ⏸ 待启动 | [预估] | Phase 1 关门 |
+| **1** | 主页整体重构 | ✅ 完成 | 1 天 | Phase 0 关门 |
+| **2** | [待规划] | ⏸ 待启动 | — | Phase 1 关门 |
 
 ---
 
@@ -58,23 +58,44 @@
 - [x] .cursor/rules/（Cursor 配置）
 
 **Definition of Done**：
-- [ ] AGENTS.md 有隔离区 + Critical Rules + DoD 清单
-- [ ] MEMORY.md 有当前状态 + 下一步
-- [ ] docs/decisions/ 有技术栈选型 ADR
+- [x] AGENTS.md 有隔离区 + Critical Rules + DoD 清单
+- [x] MEMORY.md 有当前状态 + 下一步
+- [x] docs/decisions/ 有技术栈选型 ADR
 
 ---
 
-## Phase 1 · [下一阶段名称]
+## Phase 1 · 主页整体重构
 
-**目标**：[填入这个阶段要完成什么]
+**目标**：将主页从简单的三屏滚动重构为温暖优雅风格的单页连续滚动页面，包含自我介绍、技能图谱、第三方链接。
 
 **交付物**：
-- [ ] [交付物 1]
-- [ ] [交付物 2]
+- [x] 更新配色方案（暖色调深色底 + 暖白文字）
+- [x] 5 个 Section 组件（Hero / About / Skills / Links / Footer）
+- [x] 可复用的 AnimateInView 动画组件
+- [x] 数据驱动的技能模块（`src/data/skills.ts`）
+- [x] 数据驱动的链接模块（`src/data/links.ts`）
+- [x] LinkCard 卡片组件
+- [x] 滚动驱动动画（fade-in + slide-up + stagger）
+- [x] prefers-reduced-motion 支持
+- [x] Footer 版权信息 + ICP 备案号
 
 **Definition of Done**：
-- [ ] [验收标准 1]
-- [ ] [验收标准 2]
+- [x] `pnpm build` 构建通过
+- [x] dev server 正常运行
+- [x] 页面结构和视觉效果符合设计方案
+- [x] MEMORY.md 同步更新
+
+---
+
+## Phase 2 · [待规划]
+
+**目标**：[待填充]
+
+**交付物**：
+- [ ] [待填充]
+
+**Definition of Done**：
+- [ ] [待填充]
 
 ---
 
@@ -83,3 +104,4 @@
 | 日期 | 决策 | 详见 |
 |------|------|------|
 | 2026-06-03 | 初始化项目文档基建 | — |
+| 2026-06-03 | 主页整体重构：温暖优雅风 + 单页连续滚动 | 设计方案 A |
