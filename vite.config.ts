@@ -41,6 +41,7 @@ export default defineConfig({
     alias: {
       "@components": resolvePath("src/components"),
       "@utils": resolvePath("src/utils"),
+      "@assets": resolvePath("src/assets"),
     },
   },
   server: {
