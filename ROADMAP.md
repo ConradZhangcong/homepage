@@ -28,7 +28,7 @@
 | 项 | 值 |
 |---|---|
 | 当前 Phase | **Phase 2 · 生长叙事重设计** |
-| 下一 Phase | Phase 2 实现与验收 |
+| 下一 Phase | Phase 2 视觉验收与微调 |
 | 上线版本 | 未上线 |
 | 最后更新 | 2026-08-01 |
 
@@ -93,20 +93,20 @@
 
 **交付物**：
 - [x] 记录完整视觉与交互设计方案
-- [ ] Seed / Roots / Sprout / Branches / Canopy / Seeds 六阶段叙事
-- [ ] 滚动进度驱动的树苗生长视觉
-- [ ] About、Skills、Links 内容融入成长阶段
-- [ ] 桌面端沉浸式布局与移动端纵向降级
-- [ ] `prefers-reduced-motion` 静态完整树形降级
-- [ ] 成长时间线纯函数及回归测试
-- [ ] 更新架构与开发进度文档
+- [x] Seed / Roots / Sprout / Branches / Canopy / Seeds 六阶段叙事
+- [x] 滚动进度驱动的树苗生长视觉
+- [x] About、Skills、Links 内容融入成长阶段
+- [x] 桌面端沉浸式布局与移动端纵向降级
+- [x] `prefers-reduced-motion` 静态完整树形降级
+- [x] 成长时间线纯函数及回归测试
+- [x] 更新架构与开发进度文档
 
 **Definition of Done**：
-- [ ] 核心滚动动画在桌面端保持流畅，不使用会频繁触发布局的属性
-- [ ] 移动端内容完整、交互可用，无横向溢出
-- [ ] reduced-motion 模式无需动画也能理解全部内容
-- [ ] 测试、`pnpm build`、脚本 Lint 和 Stylelint 全部通过
-- [ ] MEMORY.md、ROADMAP.md、相关 ADR 和架构文档同步更新
+- [x] 核心滚动动画不使用会频繁触发布局的属性
+- [ ] 用户确认桌面端与移动端视觉和滚动体验
+- [x] reduced-motion 模式无需动画也能理解全部内容
+- [x] 测试、`pnpm build`、脚本 Lint 和 Stylelint 全部通过
+- [x] MEMORY.md、ROADMAP.md、相关 ADR 和架构文档同步更新
 
 ---
 

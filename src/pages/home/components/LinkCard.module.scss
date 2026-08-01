@@ -1,72 +1,73 @@
 .icon {
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  color: $common-font-secondary;
-  background: rgb(255 255 255 / 5%);
-  border-radius: 12px;
-  transition: color 0.3s ease;
-}
-
-.arrow {
-  flex-shrink: 0;
-  color: $common-font-secondary;
-  opacity: 0.5;
-  transition: all 0.3s ease;
-}
-
-.card {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  padding: 20px 24px;
-  text-decoration: none;
-  cursor: pointer;
-  background: $common-card-bg;
-  border: 1px solid $common-border;
-  border-radius: 16px;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-
-  &:hover {
-    background: $common-card-hover-bg;
-    border-color: rgb(255 255 255 / 15%);
-    box-shadow: 0 8px 32px rgb(0 0 0 / 30%);
-    transform: translateY(-4px);
-
-    .icon {
-      color: $common-accent-light;
-    }
-
-    .arrow {
-      opacity: 1;
-      transform: translateX(3px);
-    }
-  }
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #b8d986;
+  background: rgb(111 165 111 / 12%);
+  border-radius: 50%;
 }
 
 .info {
   display: flex;
-  flex: 1;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
+  min-width: 0;
 }
 
 .name {
-  font-size: 15px;
-  font-weight: 600;
-  color: $common-font-color;
+  font-size: 13px;
+  font-weight: 500;
 }
 
 .desc {
-  font-size: 13px;
+  overflow: hidden;
+  font-size: 10px;
   color: $common-font-secondary;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-@media (max-width: 640px) {
-  .card {
-    padding: 16px 20px;
+.arrow {
+  font-size: 14px;
+  color: rgb(242 240 231 / 30%);
+  transition: color 220ms ease, transform 220ms ease;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 32px 1fr auto;
+  gap: 11px;
+  align-items: center;
+  min-width: 0;
+  padding: 14px;
+  color: $common-font-color;
+  text-decoration: none;
+  background: rgb(242 240 231 / 4%);
+  border: 1px solid rgb(242 240 231 / 8%);
+  border-radius: 14px;
+  transition: background 220ms ease, border-color 220ms ease,
+    transform 220ms ease;
+
+  &:hover,
+  &:focus-visible {
+    background: rgb(111 165 111 / 12%);
+    border-color: rgb(184 217 134 / 28%);
+    outline: none;
+    transform: translateY(-3px);
+
+    .arrow {
+      color: #b8d986;
+      transform: translate(2px, -2px);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .arrow {
+    transition: none;
   }
 }

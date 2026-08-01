@@ -9,6 +9,7 @@
     "lint:script": "eslint --ext .js,.jsx,.ts,.tsx --quiet ./",
     "lint:style": "stylelint \"src/**/*.{css,scss}\"",
     "lint": "npm run lint:script && npm run lint:style",
+    "test": "tsc --target ES2020 --module commonjs --skipLibCheck --outDir tests/.compiled src/pages/home/growthTimeline.ts && node --test tests/growthTimeline.test.cjs",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "prepare": "husky install"
