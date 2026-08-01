@@ -8,267 +8,67 @@
   pointer-events: none;
 }
 
+.canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+}
+
 .atmosphere {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background: radial-gradient(
-      circle at 76% 16%,
-      rgb(184 217 134 / calc(var(--canopy-progress) * 11%)),
-      transparent 25%
+      circle at 68% 36%,
+      rgb(111 165 111 / calc(var(--canopy-progress) * 13%)),
+      transparent 32%
     ),
     linear-gradient(
       180deg,
       rgb(7 17 13 / 0%) 0%,
-      rgb(17 33 23 / calc(var(--trunk-progress) * 70%)) 52%,
-      rgb(23 17 11 / 75%) 72%,
+      rgb(17 33 23 / calc(var(--trunk-progress) * 55%)) 52%,
+      rgb(23 17 11 / 70%) 70%,
       rgb(12 10 7 / 96%) 100%
     );
-}
-
-.sun {
-  position: absolute;
-  top: 12%;
-  right: 16%;
-  width: 110px;
-  aspect-ratio: 1;
-  background: rgb(221 230 174 / 12%);
-  filter: blur(4px);
-  border-radius: 50%;
-  box-shadow: 0 0 90px rgb(184 217 134 / 18%);
-  opacity: var(--canopy-progress);
-  transform: translateY(calc((1 - var(--canopy-progress)) * 30px));
 }
 
 .ground {
   position: absolute;
   top: 68%;
-  left: 50%;
-  width: min(54vw, 700px);
+  left: calc(67% - var(--canopy-progress) * 17%);
+  z-index: 3;
+  width: min(68vw, 920px);
   height: 1px;
   background: linear-gradient(
     90deg,
     transparent,
-    rgb(197 138 85 / 35%),
+    rgb(197 138 85 / 36%),
     transparent
   );
-  transform: translateX(-50%) scaleX(calc(0.35 + var(--roots-progress) * 0.65));
+  box-shadow: 0 0 30px rgb(197 138 85 / 10%);
+  transform: translateX(-50%) scaleX(calc(0.3 + var(--roots-progress) * 0.7));
 }
 
-.tree {
+.progress-rail {
   position: absolute;
-  top: 68%;
-  left: 50%;
+  top: 50%;
+  right: 31px;
+  z-index: 4;
   width: 1px;
-  height: 1px;
-  transform: translate(-50%, -50%);
-}
+  height: 120px;
+  overflow: hidden;
+  background: rgb(242 240 231 / 10%);
+  transform: translateY(-50%);
 
-.seed {
-  position: absolute;
-  top: -9px;
-  left: -7px;
-  width: 14px;
-  height: 19px;
-  background: linear-gradient(145deg, #cf9a62, #684126 70%);
-  border: 1px solid rgb(242 240 231 / 28%);
-  border-radius: 70% 35% 65% 40%;
-  box-shadow: 0 0 0 8px rgb(197 138 85 / 4%), 0 0 36px rgb(197 138 85 / 22%);
-  opacity: calc(1 - var(--sprout-progress) * 0.82);
-  transform: rotate(42deg) scale(calc(1 - var(--sprout-progress) * 0.18));
-  animation: seed-breathe 3.2s ease-in-out infinite;
-}
-
-.root-system {
-  position: absolute;
-  top: 4px;
-  left: 0;
-}
-
-.root {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #9a6840, rgb(154 104 64 / 12%));
-  border-radius: 999px;
-  opacity: calc(0.2 + var(--roots-progress) * 0.8);
-  transform-origin: left center;
-}
-
-.root-one {
-  width: 190px;
-  transform: rotate(18deg) scaleX(var(--roots-progress));
-}
-
-.root-two {
-  width: 160px;
-  transform: rotate(156deg) scaleX(var(--roots-progress));
-}
-
-.root-three {
-  width: 128px;
-  transform: rotate(55deg) scaleX(var(--roots-progress));
-}
-
-.root-four {
-  width: 138px;
-  transform: rotate(120deg) scaleX(var(--roots-progress));
-}
-
-.root-five {
-  width: 100px;
-  transform: rotate(88deg) scaleX(var(--roots-progress));
-}
-
-.trunk {
-  position: absolute;
-  bottom: 0;
-  left: -6px;
-  width: 12px;
-  height: min(43vh, 390px);
-  background: linear-gradient(90deg, #4a2e1d, #8a5a35 48%, #3f281a);
-  border-radius: 70% 50% 22% 18%;
-  box-shadow: 0 0 24px rgb(184 217 134 / 5%);
-  transform: scaleY(var(--trunk-progress));
-  transform-origin: bottom center;
-}
-
-.branch {
-  position: absolute;
-  width: 125px;
-  height: 5px;
-  background: linear-gradient(90deg, #6e472a, #775538 68%, transparent);
-  border-radius: 999px;
-  transform-origin: left center;
-}
-
-.branch-one {
-  top: 34%;
-  left: 5px;
-  transform: rotate(-28deg) scaleX(var(--branches-progress));
-}
-
-.branch-two {
-  top: 46%;
-  right: 5px;
-  width: 150px;
-  background: linear-gradient(270deg, #6e472a, #775538 68%, transparent);
-  transform: rotate(205deg) scaleX(var(--branches-progress));
-  transform-origin: right center;
-}
-
-.branch-three {
-  top: 20%;
-  left: 5px;
-  width: 95px;
-  transform: rotate(-45deg) scaleX(var(--branches-progress));
-}
-
-.branch-four {
-  top: 26%;
-  right: 5px;
-  width: 105px;
-  background: linear-gradient(270deg, #6e472a, #775538 68%, transparent);
-  transform: rotate(220deg) scaleX(var(--branches-progress));
-  transform-origin: right center;
-}
-
-.branch-five {
-  top: 9%;
-  left: 5px;
-  width: 78px;
-  transform: rotate(-62deg) scaleX(var(--branches-progress));
-}
-
-.branch-six {
-  top: 12%;
-  right: 5px;
-  width: 72px;
-  background: linear-gradient(270deg, #6e472a, #775538 68%, transparent);
-  transform: rotate(235deg) scaleX(var(--branches-progress));
-  transform-origin: right center;
-}
-
-.canopy {
-  position: absolute;
-  top: -76px;
-  left: 50%;
-  display: grid;
-  grid-template-columns: repeat(6, 56px);
-  grid-auto-rows: 52px;
-  justify-content: center;
-  width: 370px;
-  height: 275px;
-  opacity: var(--canopy-progress);
-  transform: translateX(-50%) scale(calc(0.45 + var(--canopy-progress) * 0.55));
-  transform-origin: center 75%;
-}
-
-.leaf {
-  position: relative;
-  width: 66px;
-  height: 42px;
-  background: linear-gradient(140deg, #9abb70, #426547 72%);
-  border: 1px solid rgb(242 240 231 / 8%);
-  border-radius: 80% 18% 72% 25%;
-  box-shadow: 0 8px 30px rgb(5 14 9 / 28%);
-  transform: rotate(-12deg);
-  animation: leaf-sway 5s ease-in-out infinite alternate;
-}
-
-.leaf:nth-child(2n) {
-  top: 13px;
-  background: linear-gradient(140deg, #789b62, #284c39 75%);
-  transform: rotate(24deg) scale(0.9);
-  animation-delay: -1.7s;
-}
-
-.leaf:nth-child(3n) {
-  left: -7px;
-  background: linear-gradient(140deg, #b8d986, #53734e 70%);
-  transform: rotate(-35deg) scale(0.75);
-  animation-delay: -3.1s;
-}
-
-.falling-seed {
-  position: absolute;
-  width: 6px;
-  height: 10px;
-  background: #b88956;
-  border-radius: 70% 30%;
-  opacity: var(--seeds-progress);
-}
-
-.falling-seed-one {
-  top: -210px;
-  left: 120px;
-  transform: translate(
-      calc(var(--seeds-progress) * 34px),
-      calc(var(--seeds-progress) * 230px)
-    )
-    rotate(calc(var(--seeds-progress) * 240deg));
-}
-
-.falling-seed-two {
-  top: -160px;
-  left: -145px;
-  transform: translate(
-      calc(var(--seeds-progress) * -18px),
-      calc(var(--seeds-progress) * 175px)
-    )
-    rotate(calc(var(--seeds-progress) * -180deg));
-}
-
-@keyframes seed-breathe {
-  50% {
-    box-shadow: 0 0 0 12px rgb(197 138 85 / 3%), 0 0 42px rgb(197 138 85 / 30%);
-  }
-}
-
-@keyframes leaf-sway {
-  to {
-    margin-left: 4px;
-    transform: rotate(-7deg);
+  span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #b8d986, #c58a55);
+    transform: scaleY(var(--page-progress));
+    transform-origin: top;
   }
 }
 
@@ -279,25 +79,18 @@
     height: 100svh;
   }
 
-  .tree {
-    top: 72%;
-    transform: translate(-50%, -50%) scale(0.78);
+  .canvas {
+    opacity: 0.72;
   }
 
   .ground {
     top: 72%;
-    width: 88vw;
+    left: 50%;
+    width: 90vw;
   }
 
-  .sun {
-    right: 8%;
-    width: 80px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .seed,
-  .leaf {
-    animation: none;
+  .progress-rail {
+    right: 14px;
+    height: 90px;
   }
 }

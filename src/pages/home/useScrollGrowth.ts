@@ -1,12 +1,20 @@
 import { useEffect, useState, type RefObject } from "react";
 import { getGrowthStage, getGrowthState } from "./growthTimeline";
 
+export const GROWTH_UPDATE_EVENT = "growth:update";
+
+export interface GrowthUpdateDetail {
+  progress: number;
+  growth: ReturnType<typeof getGrowthState>;
+  reducedMotion: boolean;
+}
+
 const setGrowthVariables = (
   element: HTMLElement,
   progress: number,
   reducedMotion: boolean,
 ) => {
-  const growthState = getGrowthState(progress, reducedMotion);
+  const growthState = getGrowthState(progress);
 
   element.style.setProperty("--page-progress", progress.toFixed(4));
   element.style.setProperty("--roots-progress", growthState.roots.toFixed(4));
@@ -19,6 +27,12 @@ const setGrowthVariables = (
   element.style.setProperty("--canopy-progress", growthState.canopy.toFixed(4));
   element.style.setProperty("--seeds-progress", growthState.seeds.toFixed(4));
   element.dataset.growthStage = getGrowthStage(progress);
+  element.dataset.motion = reducedMotion ? "reduced" : "full";
+  element.dispatchEvent(
+    new CustomEvent<GrowthUpdateDetail>(GROWTH_UPDATE_EVENT, {
+      detail: { progress, growth: growthState, reducedMotion },
+    }),
+  );
 };
 
 /** Tracks the visitor's reduced-motion preference. */

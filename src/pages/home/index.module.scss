@@ -96,13 +96,13 @@
 
 .hero {
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   padding-top: clamp(120px, 18vh, 190px);
-  text-align: center;
+  text-align: left;
 }
 
 .hero-panel {
-  width: min(900px, 92vw);
+  width: min(52vw, 720px);
 }
 
 .eyebrow,
@@ -117,7 +117,7 @@
 
 .hero h1 {
   margin: 0;
-  font-size: clamp(3rem, 7vw, 7rem);
+  font-size: clamp(3rem, 6.1vw, 6.25rem);
   font-weight: 500;
   line-height: 0.98;
   letter-spacing: -0.065em;
@@ -136,15 +136,14 @@
 
 .scroll-cue {
   position: absolute;
-  top: 50vh;
-  left: 50%;
+  bottom: 9vh;
+  left: clamp(28px, 7vw, 112px);
   display: flex;
   flex-direction: column;
   gap: 12px;
   align-items: center;
   color: rgb(242 240 231 / 42%);
   text-decoration: none;
-  transform: translateX(-50%);
 }
 
 .cue-text {
@@ -298,15 +297,16 @@
 
 .ending {
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  justify-content: flex-start;
+  text-align: left;
 }
 
 .ending-panel {
-  width: min(680px, 90vw);
+  width: min(39vw, 560px);
+  margin-right: auto;
 
   .body-copy {
-    margin: 0 auto;
+    margin: 0;
   }
 }
 
@@ -396,17 +396,25 @@
   }
 
   .hero {
+    justify-content: center;
     min-height: 100svh;
     padding-top: 118px;
+    text-align: center;
   }
 
   .hero h1 {
     font-size: clamp(3.05rem, 15vw, 5rem);
   }
 
+  .hero-panel {
+    width: min(900px, 92vw);
+  }
+
   .scroll-cue {
     top: auto;
     bottom: 14vh;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .panel,
@@ -426,6 +434,20 @@
     background: transparent;
     border: 0;
     backdrop-filter: none;
+  }
+
+  .ending {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .ending-panel {
+    width: 100%;
+    margin-right: 0;
+
+    .body-copy {
+      margin: 0 auto;
+    }
   }
 
   .panel h2 {

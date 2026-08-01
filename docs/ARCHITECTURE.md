@@ -31,10 +31,12 @@ Browser → Vite Dev Server → React App (SPA)
 | 数据层 | `src/data/` | 技能和链接的静态数据，后期可替换为 API |
 | 成长时间线 | `src/pages/home/growthTimeline.ts` | 将全局进度映射为各生长阶段的纯函数 |
 | 滚动协调 | `src/pages/home/useScrollGrowth.ts` | 用 requestAnimationFrame 合并滚动更新并写入 CSS 变量 |
-| 场景组件 | `src/pages/home/components/TreeScene.tsx` | 以装饰性 DOM/CSS 呈现树苗成长，不承载正文语义 |
+| 粒子树模型 | `src/pages/home/particleTree.ts` | 确定性生成带曲率的枝干、层级根系、叶冠粒子、末屏锚点与显现区间 |
+| 场景组件 | `src/pages/home/components/TreeScene.tsx` | 使用 Canvas 绘制有机曲线、树皮渐变和科技粒子，不承载正文语义 |
 | 链接组件 | `src/pages/home/components/LinkCard.tsx` | 渲染树冠中的外部链接卡片 |
 | 样式 | `src/styles/` | 全局样式、SCSS 变量、动画 keyframes |
 | 静态资源 | `src/assets/` | favicon、图标等 |
+| 设计归档 | `docs/assets/` | 概念参考图及其来源说明，不进入生产页面资源 |
 
 ---
 
@@ -57,8 +59,9 @@ Browser → Vite Dev Server → React App (SPA)
 scroll / resize 事件 → requestAnimationFrame 合并更新
   → 计算主页标准化滚动进度
   → growthTimeline 生成 roots / sprout / trunk / branches / canopy / seeds
-  → 写入主页 CSS 自定义属性 → TreeScene 使用 transform / opacity 绘制成长
-  → prefers-reduced-motion 时直接写入完整成长状态
+  → 写入主页 CSS 自定义属性并发送 growth:update → TreeScene 用 Canvas 逐帧绘制成长
+  → Seeds 阶段驱动树形向右归位并放大，形成“左侧内容、右侧树体”的收束构图
+  → prefers-reduced-motion 时保留用户滚动直接控制，仅关闭呼吸、摆动等自动动画
 ```
 
 ---
@@ -70,7 +73,7 @@ scroll / resize 事件 → requestAnimationFrame 合并更新
 | 技术栈 | React + TS + SCSS + Vite | `docs/decisions/2026-06-03-tech-stack.md` |
 | 布局方式 | 单页连续滚动（移除 scroll-snap） | Phase 1 设计方案 |
 | 动画方案 | 原生滚动进度 + requestAnimationFrame + CSS 变量 | `docs/decisions/2026-08-01-growth-narrative.md` |
-| 树形方案 | 语义化 DOM 与 CSS 图形，场景对辅助技术隐藏 | `docs/decisions/2026-08-01-growth-narrative.md` |
+| 树形方案 | 确定性递归几何 + Canvas 粒子绘制，场景对辅助技术隐藏 | `docs/decisions/2026-08-01-growth-narrative.md` |
 | 数据驱动 | 技能和链接独立为 TS 模块 | 方便后期替换为可配置数据源 |
 
 ---
@@ -93,6 +96,6 @@ scroll / resize 事件 → requestAnimationFrame 合并更新
 
 - **全局变量**：`src/styles/variable.scss`（通过 Vite additionalData 自动注入所有 SCSS 文件）
 - **CSS Modules**：每个组件对应一个 `.module.scss` 文件，类名自动生成唯一标识
-- **动画**：React Hook 负责滚动协调，纯函数计算阶段进度，CSS 负责视觉变换
+- **动画**：React Hook 负责滚动协调，纯函数计算阶段与树形几何，Canvas 负责高密度视觉绘制
 - **响应式**：760px 以下停用 sticky 叙事，转为自然纵向内容卡片
 - **无障碍**：实际内容使用 section、标题和链接；TreeScene 为纯装饰并设置 `aria-hidden`

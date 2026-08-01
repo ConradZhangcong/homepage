@@ -7,15 +7,6 @@ export interface GrowthState {
   seeds: number;
 }
 
-const COMPLETE_GROWTH_STATE: GrowthState = {
-  roots: 1,
-  sprout: 1,
-  trunk: 1,
-  branches: 1,
-  canopy: 1,
-  seeds: 1,
-};
-
 /** Keeps a numeric value inside the inclusive 0–1 range. */
 export const clampProgress = (value: number): number =>
   Math.min(1, Math.max(0, value));
@@ -32,12 +23,7 @@ export const getStageProgress = (
 };
 
 /** Converts global page progress into the independent phases of tree growth. */
-export const getGrowthState = (
-  progress: number,
-  reducedMotion = false,
-): GrowthState => {
-  if (reducedMotion) return COMPLETE_GROWTH_STATE;
-
+export const getGrowthState = (progress: number): GrowthState => {
   const safeProgress = clampProgress(progress);
 
   return {

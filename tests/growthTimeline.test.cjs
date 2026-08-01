@@ -48,16 +48,10 @@ test("growth phases start and complete in narrative order", () => {
   });
 });
 
-test("reduced motion presents a complete static tree", () => {
-  assert.deepEqual(getGrowthState(0, true), getGrowthState(1, true));
-  assert.deepEqual(getGrowthState(0, true), {
-    roots: 1,
-    sprout: 1,
-    trunk: 1,
-    branches: 1,
-    canopy: 1,
-    seeds: 1,
-  });
+test("scroll position always controls growth state", () => {
+  assert.notDeepEqual(getGrowthState(0), getGrowthState(1));
+  assert.equal(getGrowthState(0).trunk, 0);
+  assert.equal(getGrowthState(1).trunk, 1);
 });
 
 test("semantic stages cover every narrative chapter", () => {

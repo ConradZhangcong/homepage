@@ -21,6 +21,13 @@
 
 ## 记录
 
+### 2026-08-01 用 camelCase 访问连字符 CSS Module 类名
+
+**场景**：组件样式使用 `.hero-panel`、`.progress-rail` 等连字符类名，TSX 中却写成 `styles.heroPanel`、`styles.progressRail`。
+**错误做法**：假设 Vite CSS Modules 会默认把 kebab-case 类名额外导出为 camelCase 属性。
+**后果**：TypeScript 因通用模块声明不会报错，但运行时类名为 `undefined`，对应布局、根系、进度条和隐藏状态全部失效。
+**正确做法**：连字符类名必须使用 `styles["hero-panel"]` 形式访问；测试会扫描并阻止同类错误再次进入。
+
 ### 2026-06-03 SCSS 模块文件中使用 @use 导致构建失败
 
 **场景**：重构主页时，在 CSS Modules 文件（如 `HeroSection.module.scss`）中使用 `@use "../styles/variable" as *` 引入变量。
